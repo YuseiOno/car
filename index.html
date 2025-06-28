@@ -315,6 +315,134 @@
             margin-top: 40px;
             text-align: center;
         }
+
+        /* モバイル対応 */
+        @media screen and (max-width: 768px) {
+            body {
+                margin: 10px;
+                padding: 10px;
+            }
+            .container {
+                padding: 20px 15px;
+                margin: 15px auto;
+            }
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 20px;
+                margin-top: 25px;
+            }
+            h3 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+            .input-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .vehicle-input-column {
+                min-width: unset;
+                width: 100%;
+                padding: 15px;
+            }
+            .input-group {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 15px;
+            }
+            .input-group label {
+                flex: unset;
+                width: 100%;
+                margin-bottom: 5px;
+                margin-right: 0;
+            }
+            .input-group input[type="number"], 
+            .input-group input[type="date"], 
+            .input-group select,
+            .input-group input[type="text"] {
+                width: 100%;
+                font-size: 14px;
+                padding: 8px;
+            }
+            .input-group .unit {
+                margin-left: 0;
+                margin-top: 5px;
+                width: 100%;
+                text-align: right;
+            }
+            .info-text {
+                padding-left: 0; /* モバイルではインデントをなくす */
+                text-align: left;
+                font-size: 0.8em;
+            }
+
+            button {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .result-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .result-item {
+                min-width: unset;
+                width: 100%;
+                padding: 15px;
+            }
+            .result-item strong {
+                font-size: 20px;
+            }
+            .result-item .monthly-avg {
+                font-size: 13px;
+            }
+
+            .comparison-option {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .comparison-option input[type="checkbox"] {
+                margin-bottom: 5px;
+            }
+            .comparison-option label {
+                font-size: 1em;
+            }
+
+            /* 月次詳細テーブルのスタイル調整 */
+            .monthly-breakdown-table-wrapper {
+                overflow-x: auto; /* テーブルが画面幅を超える場合にスクロールを有効にする */
+                -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
+                max-height: 400px; /* モバイルでは高さを少し抑える */
+            }
+            .monthly-breakdown table {
+                min-width: 700px; /* 少なくともこの幅を保持してスクロールさせる */
+                font-size: 12px; /* 文字サイズを小さく */
+            }
+            .monthly-breakdown th, .monthly-breakdown td {
+                padding: 8px 5px;
+            }
+            .monthly-breakdown tbody td:first-child,
+            .monthly-breakdown thead th:first-child {
+                min-width: 80px;
+            }
+
+            .chart-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .chart-controls select {
+                width: 100%;
+            }
+            .chart-container {
+                max-width: 100%;
+            }
+            .disclaimer {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -343,7 +471,8 @@
         </div>
 
         <div class="input-section">
-            <div class="vehicle-input-column" id="vehicle1Inputs">
+            
+<div class="vehicle-input-column" id="vehicle1Inputs">
                 <h3>車両 1</h3>
                 <div class="input-group">
                     <label for="vehicle1Name">車両名</label>
@@ -476,7 +605,8 @@
                 </div>
             </div>
 
-            <div class="vehicle-input-column" id="vehicle2Inputs" style="display: none;">
+            
+<div class="vehicle-input-column" id="vehicle2Inputs" style="display: none;">
                 <h3>車両 2</h3>
                 <div class="input-group">
                     <label for="vehicle2Name">車両名</label>
@@ -652,7 +782,8 @@
                 <span>月ごとの費用内訳を表示/非表示</span> <span class="arrow">▶</span>
             </button>
             <div class="monthly-breakdown-container" id="monthlyBreakdownTables">
-                </div>
+                
+</div>
         </div>
 
         <p class="disclaimer">※この計算結果は目安です。実際の費用は、車種、地域、エコカー減税の有無、ローンの契約内容、走行条件などにより大きく異なります。また、税額は一般的な金額に基づいています。</p>
@@ -1295,12 +1426,13 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false, /* モバイルでアスペクト比を維持しない */
                     plugins: {
                         title: {
                             display: true,
                             text: `車両別 ${chartLabelMap[chartType]}${chartType === 'total' ? ' 累計' : ''} 推移`, 
                             font: {
-                                size: 20
+                                size: 16 /* モバイル向けにフォントサイズ調整 */
                             }
                         },
                         tooltip: {
@@ -1322,18 +1454,32 @@
                         x: {
                             title: {
                                 display: true,
-                                text: '年月'
+                                text: '年月',
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    size: 10
+                                }
                             }
                         },
                         y: {
                             title: {
                                 display: true,
-                                text: `${chartLabelMap[chartType]} (円)`
+                                text: `${chartLabelMap[chartType]} (円)`,
+                                font: {
+                                    size: 12
+                                }
                             },
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value, index, values) {
                                     return formatNumber(value);
+                                },
+                                font: {
+                                    size: 10
                                 }
                             }
                         }
