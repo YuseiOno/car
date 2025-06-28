@@ -362,6 +362,7 @@
                 margin-bottom: 5px;
                 margin-right: 0;
             }
+            /* ここから修正 */
             .input-group input[type="number"], 
             .input-group input[type="date"], 
             .input-group select,
@@ -370,7 +371,9 @@
                 font-size: 14px;
                 padding: 8px;
                 min-width: unset; /* 最小幅を解除 */
+                box-sizing: border-box; /* ここにもbox-sizingを追加 */
             }
+            /* ここまで修正 */
             .input-group .unit {
                 margin-left: 0;
                 margin-top: 5px;
@@ -392,11 +395,14 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            /* ここから修正 */
             .result-item {
                 min-width: unset;
-                width: 100%;
+                width: 100%; /* フル幅に */
                 padding: 15px;
+                box-sizing: border-box; /* ここにもbox-sizingを追加 */
             }
+            /* ここまで修正 */
             .result-item strong {
                 font-size: 20px;
             }
@@ -1160,7 +1166,7 @@
                     totalMileageFromRegistration += actualMonthlyMileage; 
 
                     if (vehicle.loanOption === 'yes' && vehicle.monthlyLoanPayment > 0 && loanMonthCounter < vehicle.loanTermMonths) {
-                        monthlyDetail.loan = vehicle.monthlyLoanPayment;
+                        monthlyDetail.loan = monthlyDetail.loan + vehicle.monthlyLoanPayment;
                         loanMonthCounter++; 
                     }
 
