@@ -47,11 +47,11 @@
             display: flex;
             justify-content: space-around;
             gap: 30px;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* PCでも必要に応じて折り返す */
         }
         .vehicle-input-column {
             flex: 1;
-            min-width: 350px;
+            min-width: 350px; /* PCでの最小幅を維持 */
             padding: 20px;
             border: 1px solid #eee;
             border-radius: 8px;
@@ -68,10 +68,10 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* 必要に応じて折り返す */
         }
         .input-group label {
-            flex: 0 0 160px;
+            flex: 0 0 160px; /* ラベルの固定幅 */
             margin-bottom: 0;
             margin-right: 10px;
             font-weight: bold;
@@ -81,13 +81,14 @@
         .input-group input[type="date"], 
         .input-group select,
         .input-group input[type="text"] {
-            flex-grow: 1;
+            flex-grow: 1; /* 入力フィールドが残りのスペースを埋める */
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 15px;
             box-sizing: border-box;
-            width: auto;
+            width: auto; /* flex-growとの併用 */
+            min-width: 100px; /* 小さすぎるのを防ぐ */
         }
         .input-group input[type="number"]:focus, 
         .input-group input[type="date"]:focus, 
@@ -101,16 +102,16 @@
             margin-left: 10px;
             font-weight: bold;
             color: #555;
-            flex-shrink: 0;
+            flex-shrink: 0; /* 縮まない */
         }
         .info-text {
             font-size: 0.85em;
             color: #666;
             margin-top: 5px;
             margin-bottom: 10px;
-            flex-basis: 100%;
+            flex-basis: 100%; /* 全幅を使う */
             text-align: left;
-            padding-left: calc(160px + 10px); 
+            padding-left: calc(160px + 10px); /* ラベルとマージンの分インデント */
             box-sizing: border-box;
         }
         
@@ -239,12 +240,13 @@
             border-radius: 5px;
             margin-top: 10px;
             position: relative; /* thead fixed の基準 */
+            -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
         }
 
         .monthly-breakdown table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px; /* 最小幅を設定して横スクロールを発生させる */
+            min-width: 900px; /* PCでのテーブル最小幅 */
             font-size: 14px;
         }
         .monthly-breakdown th, .monthly-breakdown td {
@@ -307,7 +309,8 @@
             position: relative;
             margin: 20px auto;
             width: 100%;
-            max-width: 1000px;
+            max-width: 900px; /* PCでのグラフの最大幅を調整 */
+            height: 450px; /* PCでのグラフの高さを固定 */
         }
         .disclaimer {
             font-size: 14px;
@@ -316,7 +319,7 @@
             text-align: center;
         }
 
-        /* モバイル対応 */
+        /* --- モバイル対応 --- */
         @media screen and (max-width: 768px) {
             body {
                 margin: 10px;
@@ -339,22 +342,22 @@
                 margin-bottom: 15px;
             }
             .input-section {
-                flex-direction: column;
+                flex-direction: column; /* モバイルでは縦並び */
                 gap: 20px;
             }
             .vehicle-input-column {
-                min-width: unset;
-                width: 100%;
+                min-width: unset; /* 最小幅を解除 */
+                width: 100%; /* フル幅に */
                 padding: 15px;
             }
             .input-group {
-                flex-direction: column;
+                flex-direction: column; /* モバイルでは縦並び */
                 align-items: flex-start;
                 margin-bottom: 15px;
             }
             .input-group label {
-                flex: unset;
-                width: 100%;
+                flex: unset; /* 固定幅を解除 */
+                width: 100%; /* フル幅に */
                 margin-bottom: 5px;
                 margin-right: 0;
             }
@@ -362,9 +365,10 @@
             .input-group input[type="date"], 
             .input-group select,
             .input-group input[type="text"] {
-                width: 100%;
+                width: 100%; /* フル幅に */
                 font-size: 14px;
                 padding: 8px;
+                min-width: unset; /* 最小幅を解除 */
             }
             .input-group .unit {
                 margin-left: 0;
@@ -412,20 +416,20 @@
 
             /* 月次詳細テーブルのスタイル調整 */
             .monthly-breakdown-table-wrapper {
-                overflow-x: auto; /* テーブルが画面幅を超える場合にスクロールを有効にする */
-                -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
-                max-height: 400px; /* モバイルでは高さを少し抑える */
+                overflow-x: auto; 
+                -webkit-overflow-scrolling: touch; 
+                max-height: 400px; 
             }
             .monthly-breakdown table {
-                min-width: 700px; /* 少なくともこの幅を保持してスクロールさせる */
-                font-size: 12px; /* 文字サイズを小さく */
+                min-width: 600px; /* モバイルでのテーブル最小幅を調整 */
+                font-size: 12px; 
             }
             .monthly-breakdown th, .monthly-breakdown td {
                 padding: 8px 5px;
             }
             .monthly-breakdown tbody td:first-child,
             .monthly-breakdown thead th:first-child {
-                min-width: 80px;
+                min-width: 70px; /* 月の列の最小幅を調整 */
             }
 
             .chart-controls {
@@ -437,7 +441,8 @@
                 width: 100%;
             }
             .chart-container {
-                max-width: 100%;
+                max-width: 100%; /* モバイルでは親要素の100% */
+                height: 300px; /* モバイルでのグラフの高さ */
             }
             .disclaimer {
                 font-size: 12px;
@@ -472,7 +477,7 @@
 
         <div class="input-section">
             
-<div class="vehicle-input-column" id="vehicle1Inputs">
+            <div class="vehicle-input-column" id="vehicle1Inputs">
                 <h3>車両 1</h3>
                 <div class="input-group">
                     <label for="vehicle1Name">車両名</label>
@@ -606,7 +611,7 @@
             </div>
 
             
-<div class="vehicle-input-column" id="vehicle2Inputs" style="display: none;">
+            <div class="vehicle-input-column" id="vehicle2Inputs" style="display: none;">
                 <h3>車両 2</h3>
                 <div class="input-group">
                     <label for="vehicle2Name">車両名</label>
@@ -783,7 +788,7 @@
             </button>
             <div class="monthly-breakdown-container" id="monthlyBreakdownTables">
                 
-</div>
+            </div>
         </div>
 
         <p class="disclaimer">※この計算結果は目安です。実際の費用は、車種、地域、エコカー減税の有無、ローンの契約内容、走行条件などにより大きく異なります。また、税額は一般的な金額に基づいています。</p>
@@ -1163,7 +1168,8 @@
                         monthlyDetail.fuel = fuelConsumption * vehicle.fuelPrice;
                     }
 
-                    if (month === 3 && vehicle.calculatedAutoTaxAnnual > 0 && monthStart.getDate() === 1) { 
+                    // 自動車税は毎年4月（month === 3）に発生
+                    if (month === 3 && vehicle.calculatedAutoTaxAnnual > 0) { 
                         monthlyDetail.autoTax = vehicle.calculatedAutoTaxAnnual;
                     }
 
@@ -1181,7 +1187,8 @@
                         }
                     }
                     
-                    if (month === 0 && vehicle.voluntaryInsurance > 0 && monthStart.getDate() === 1) { 
+                    // 任意保険料は毎年1月（month === 0）に発生と仮定
+                    if (month === 0 && vehicle.voluntaryInsurance > 0) { 
                         monthlyDetail.insurance = vehicle.voluntaryInsurance;
                     }
 
@@ -1317,8 +1324,8 @@
                     tbody.appendChild(row);
                 });
                 table.appendChild(tbody);
-                tableWrapper.appendChild(table); // ラッパーにテーブルを追加
-                tableDiv.appendChild(tableWrapper); // ラッパーをテーブルの親要素に追加
+                tableWrapper.appendChild(table); 
+                tableDiv.appendChild(tableWrapper); 
                 tablesContainer.appendChild(tableDiv);
             });
 
@@ -1418,6 +1425,8 @@
                 tire: 'タイヤ'
             };
 
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
             cumulativeCostChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -1426,13 +1435,13 @@
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false, /* モバイルでアスペクト比を維持しない */
+                    maintainAspectRatio: !isMobile, /* モバイルでのみアスペクト比を維持しない */
                     plugins: {
                         title: {
                             display: true,
                             text: `車両別 ${chartLabelMap[chartType]}${chartType === 'total' ? ' 累計' : ''} 推移`, 
                             font: {
-                                size: 16 /* モバイル向けにフォントサイズ調整 */
+                                size: isMobile ? 14 : 16 /* モバイル向けにフォントサイズ調整 */
                             }
                         },
                         tooltip: {
@@ -1456,12 +1465,12 @@
                                 display: true,
                                 text: '年月',
                                 font: {
-                                    size: 12
+                                    size: isMobile ? 10 : 12
                                 }
                             },
                             ticks: {
                                 font: {
-                                    size: 10
+                                    size: isMobile ? 8 : 10
                                 }
                             }
                         },
@@ -1470,7 +1479,7 @@
                                 display: true,
                                 text: `${chartLabelMap[chartType]} (円)`,
                                 font: {
-                                    size: 12
+                                    size: isMobile ? 10 : 12
                                 }
                             },
                             beginAtZero: true,
@@ -1479,7 +1488,7 @@
                                     return formatNumber(value);
                                 },
                                 font: {
-                                    size: 10
+                                    size: isMobile ? 8 : 10
                                 }
                             }
                         }
@@ -1509,7 +1518,7 @@
             
             // 車両1は2年前、車両2は今日を初期値とする
             document.getElementById('firstRegistrationDate1').value = `${currentYear - 2}-${currentMonth}-${currentDay}`; 
-            document.getElementById('nextInspectionDate1').value = `${currentYear}-09-15`; // 例: 2025年9月15日に設定 
+            document.getElementById('nextInspectionDate1').value = `${currentYear}-09-15`; 
 
             document.getElementById('firstRegistrationDate2').value = `${currentYear}-${currentMonth}-${currentDay}`; 
             document.getElementById('nextInspectionDate2').value = `${currentYear + 3}-01-01`; 
