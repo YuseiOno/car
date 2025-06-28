@@ -76,6 +76,7 @@
             margin-right: 10px;
             font-weight: bold;
             color: #555;
+            box-sizing: border-box; /* ここにも追加 */
         }
         .input-group input[type="number"], 
         .input-group input[type="date"], 
@@ -89,6 +90,16 @@
             box-sizing: border-box;
             width: auto; /* flex-growとの併用 */
             min-width: 100px; /* 小さすぎるのを防ぐ */
+            /* 日付入力欄のデフォルトスタイルをリセット */
+            -webkit-appearance: none; /* iOS Safari */
+            -moz-appearance: none; /* Firefox */
+            appearance: none; /* 標準 */
+        }
+        .input-group input[type="date"]::-webkit-calendar-picker-indicator {
+            /* カレンダーアイコンを右端に配置 */
+            margin-left: auto; 
+            opacity: 1; /* 不透明度 */
+            cursor: pointer;
         }
         .input-group input[type="number"]:focus, 
         .input-group input[type="date"]:focus, 
@@ -103,6 +114,7 @@
             font-weight: bold;
             color: #555;
             flex-shrink: 0; /* 縮まない */
+            box-sizing: border-box; /* ここにも追加 */
         }
         .info-text {
             font-size: 0.85em;
@@ -366,31 +378,43 @@
             .input-group input[type="date"], 
             .input-group select,
             .input-group input[type="text"] {
-                width: 100%; /* フル幅に */
+                width: 100% !important; /* 強制的にフル幅に */
+                max-width: 100% !important; /* 最大幅も設定 */
+                min-width: 0 !important; /* 最小幅を解除 */
                 font-size: 14px;
                 padding: 8px;
-                min-width: unset; 
                 box-sizing: border-box; /* 確実に適用 */
                 /* 日付入力欄のデフォルトスタイルをリセット */
-                -webkit-appearance: none; /* iOS Safari */
-                -moz-appearance: none; /* Firefox */
-                appearance: none; /* 標準 */
+                -webkit-appearance: none !important; /* iOS Safari */
+                -moz-appearance: none !important; /* Firefox */
+                appearance: none !important; /* 標準 */
             }
             .input-group input[type="date"]::-webkit-calendar-picker-indicator {
                 /* カレンダーアイコンのスタイル調整（もし必要なら） */
                 margin-left: auto; /* カレンダーアイコンを右端に */
                 opacity: 1; /* 不透明度 */
+                display: block; /* 確実に表示 */
+                position: relative; /* Safariで正しい位置に表示させるため */
+                right: 0;
             }
             .input-group .unit {
                 margin-left: 0;
                 margin-top: 5px;
-                width: 100%;
+                width: 100%; /* モバイルでは単位もフル幅に */
                 text-align: right;
+                order: 1; /* 単位を最後にする */
             }
+            /* 入力フィールドの表示順を調整 */
+            .input-group label { order: 0; }
+            .input-group input[type="number"], 
+            .input-group input[type="date"], 
+            .input-group select,
+            .input-group input[type="text"] { order: 0; } /* labelと同じオーダーにすることで、flex-growで横幅を広げる */
             .info-text {
                 padding-left: 0; /* モバイルではインデントをなくす */
                 text-align: left;
                 font-size: 0.8em;
+                order: 2; /* 補足情報を最後にする */
             }
 
             button {
