@@ -349,20 +349,19 @@
                 min-width: unset; /* 最小幅を解除 */
                 width: 100%; /* フル幅に */
                 padding: 15px;
-                box-sizing: border-box; /* ここにbox-sizingを追加 */
+                box-sizing: border-box; 
             }
             .input-group {
                 flex-direction: column; /* モバイルでは縦並び */
-                align-items: flex-start;
+                align-items: flex-start; /* ラベルを左に寄せる */
                 margin-bottom: 15px;
             }
             .input-group label {
-                flex: unset; /* 固定幅を解除 */
-                width: 100%; /* フル幅に */
+                flex: unset; 
+                width: 100%; /* ラベルもフル幅に */
                 margin-bottom: 5px;
                 margin-right: 0;
             }
-            /* ここを修正 */
             .input-group input[type="number"], 
             .input-group input[type="date"], 
             .input-group select,
@@ -370,10 +369,18 @@
                 width: 100%; /* フル幅に */
                 font-size: 14px;
                 padding: 8px;
-                min-width: unset; /* 最小幅を解除 */
+                min-width: unset; 
                 box-sizing: border-box; /* 確実に適用 */
+                /* 日付入力欄のデフォルトスタイルをリセット */
+                -webkit-appearance: none; /* iOS Safari */
+                -moz-appearance: none; /* Firefox */
+                appearance: none; /* 標準 */
             }
-            /* ここまで修正 */
+            .input-group input[type="date"]::-webkit-calendar-picker-indicator {
+                /* カレンダーアイコンのスタイル調整（もし必要なら） */
+                margin-left: auto; /* カレンダーアイコンを右端に */
+                opacity: 1; /* 不透明度 */
+            }
             .input-group .unit {
                 margin-left: 0;
                 margin-top: 5px;
@@ -399,7 +406,7 @@
                 min-width: unset;
                 width: 100%; /* フル幅に */
                 padding: 15px;
-                box-sizing: border-box; /* ここにもbox-sizingを追加 */
+                box-sizing: border-box; 
             }
             .result-item strong {
                 font-size: 20px;
