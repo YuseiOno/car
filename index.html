@@ -47,11 +47,11 @@
             display: flex;
             justify-content: space-around;
             gap: 30px;
-            flex-wrap: wrap; /* PCでも必要に応じて折り返す */
+            flex-wrap: wrap;
         }
         .vehicle-input-column {
             flex: 1;
-            min-width: 350px; /* PCでの最小幅を維持 */
+            min-width: 350px;
             padding: 20px;
             border: 1px solid #eee;
             border-radius: 8px;
@@ -68,38 +68,31 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            flex-wrap: wrap; /* 必要に応じて折り返す */
+            flex-wrap: wrap;
         }
         .input-group label {
-            flex: 0 0 160px; /* ラベルの固定幅 */
+            flex: 0 0 160px;
             margin-bottom: 0;
             margin-right: 10px;
             font-weight: bold;
             color: #555;
-            box-sizing: border-box; /* ここにも追加 */
         }
         .input-group input[type="number"], 
         .input-group input[type="date"], 
         .input-group select,
         .input-group input[type="text"] {
-            flex-grow: 1; /* 入力フィールドが残りのスペースを埋める */
+            flex-grow: 1;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 15px;
             box-sizing: border-box;
-            width: auto; /* flex-growとの併用 */
-            min-width: 100px; /* 小さすぎるのを防ぐ */
-            /* 日付入力欄のデフォルトスタイルをリセット */
-            -webkit-appearance: none; /* iOS Safari */
-            -moz-appearance: none; /* Firefox */
-            appearance: none; /* 標準 */
+            width: auto;
         }
-        .input-group input[type="date"]::-webkit-calendar-picker-indicator {
-            /* カレンダーアイコンを右端に配置 */
-            margin-left: auto; 
-            opacity: 1; /* 不透明度 */
-            cursor: pointer;
+        .input-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
         }
         .input-group input[type="number"]:focus, 
         .input-group input[type="date"]:focus, 
@@ -113,17 +106,16 @@
             margin-left: 10px;
             font-weight: bold;
             color: #555;
-            flex-shrink: 0; /* 縮まない */
-            box-sizing: border-box; /* ここにも追加 */
+            flex-shrink: 0;
         }
         .info-text {
             font-size: 0.85em;
             color: #666;
             margin-top: 5px;
             margin-bottom: 10px;
-            flex-basis: 100%; /* 全幅を使う */
+            flex-basis: 100%;
             text-align: left;
-            padding-left: calc(160px + 10px); /* ラベルとマージンの分インデント */
+            padding-left: calc(160px + 10px); 
             box-sizing: border-box;
         }
         
@@ -139,6 +131,8 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             margin-top: 30px;
+            text-align: center;
+            text-decoration: none;
         }
         button:hover {
             background-color: #45a049;
@@ -187,7 +181,6 @@
             display: block;
         }
 
-        /* 比較モード選択チェックボックス */
         .comparison-option {
             display: flex;
             align-items: center;
@@ -209,7 +202,6 @@
             color: #388e3c;
         }
 
-        /* 月次詳細の開閉ボタンとコンテナ */
         .toggle-section-button {
             display: flex;
             align-items: center;
@@ -243,63 +235,59 @@
             display: block;
         }
 
-        /* 月次詳細テーブルのスタイル */
         .monthly-breakdown-table-wrapper {
-            max-height: 500px; /* テーブルの最大高さを設定 */
-            overflow-y: auto; /* 垂直スクロールを有効に */
-            overflow-x: auto; /* 水平スクロールも有効に */
-            border: 1px solid #ddd; /* 枠線 */
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: auto;
+            border: 1px solid #ddd;
             border-radius: 5px;
             margin-top: 10px;
-            position: relative; /* thead fixed の基準 */
-            -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
+            position: relative;
         }
 
         .monthly-breakdown table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px; /* PCでのテーブル最小幅 */
+            min-width: 900px;
             font-size: 14px;
         }
         .monthly-breakdown th, .monthly-breakdown td {
             border: 1px solid #ddd;
-            padding: 10px 8px; /* パディングを少し増やす */
+            padding: 10px 8px;
             text-align: right;
             white-space: nowrap; 
         }
         .monthly-breakdown thead th {
-            position: sticky; /* ヘッダーを固定 */
+            position: sticky;
             top: 0;
             background-color: #e9eef2;
             font-weight: bold;
             text-align: center;
-            z-index: 10; /* 他のコンテンツの上に表示 */
+            z-index: 10;
         }
         .monthly-breakdown tbody td:first-child,
         .monthly-breakdown thead th:first-child {
             text-align: left;
             font-weight: bold;
-            min-width: 100px; /* 月の列の最小幅 */
+            min-width: 100px;
         }
-        .monthly-breakdown tbody tr:nth-child(odd) { /* 奇数行の背景色 */
+        .monthly-breakdown tbody tr:nth-child(odd) {
             background-color: #fcfcfc;
         }
-        .monthly-breakdown tbody tr:nth-child(even) { /* 偶数行の背景色 */
+        .monthly-breakdown tbody tr:nth-child(even) {
             background-color: #f6f6f6;
         }
-        .monthly-breakdown tbody tr:hover { /* ホバー時のハイライト */
-            background-color: #e0f2f7; /* 明るい青色 */
+        .monthly-breakdown tbody tr:hover {
+            background-color: #e0f2f7;
         }
         .monthly-breakdown .total-row {
             background-color: #dceefc;
             font-weight: bold;
         }
         .monthly-breakdown .total-row td {
-            font-size: 15px; /* 合計行の文字を少し大きく */
+            font-size: 15px;
         }
 
-
-        /* グラフのスタイル */
         .chart-controls {
             display: flex;
             align-items: center;
@@ -321,168 +309,35 @@
             position: relative;
             margin: 20px auto;
             width: 100%;
-            max-width: 900px; /* PCでのグラフの最大幅を調整 */
-            height: 450px; /* PCでのグラフの高さを固定 */
+            max-width: 1000px;
         }
+        
+        /* --- CSVダウンロードボタンのスタイル --- */
+        .csv-export-btn {
+            position: absolute;
+            top: -10px;
+            right: 0; /* ★変更点: leftからrightに変更 */
+            z-index: 20;
+            width: auto;
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .csv-export-btn:hover {
+             background-color: #e0e0e0;
+        }
+        
         .disclaimer {
             font-size: 14px;
             color: #777;
             margin-top: 40px;
             text-align: center;
-        }
-
-        /* --- モバイル対応 --- */
-        @media screen and (max-width: 768px) {
-            body {
-                margin: 10px;
-                padding: 10px;
-            }
-            .container {
-                padding: 20px 15px;
-                margin: 15px auto;
-            }
-            h1 {
-                font-size: 24px;
-                margin-bottom: 20px;
-            }
-            h2 {
-                font-size: 20px;
-                margin-top: 25px;
-            }
-            h3 {
-                font-size: 18px;
-                margin-bottom: 15px;
-            }
-            .input-section {
-                flex-direction: column; /* モバイルでは縦並び */
-                gap: 20px;
-            }
-            .vehicle-input-column {
-                min-width: unset; /* 最小幅を解除 */
-                width: 100%; /* フル幅に */
-                padding: 15px;
-                box-sizing: border-box; 
-            }
-            .input-group {
-                flex-direction: column; /* モバイルでは縦並び */
-                align-items: flex-start; /* ラベルを左に寄せる */
-                margin-bottom: 15px;
-            }
-            .input-group label {
-                flex: unset; 
-                width: 100%; /* ラベルもフル幅に */
-                margin-bottom: 5px;
-                margin-right: 0;
-            }
-            .input-group input[type="number"], 
-            .input-group input[type="date"], 
-            .input-group select,
-            .input-group input[type="text"] {
-                width: 100% !important; /* 強制的にフル幅に */
-                max-width: 100% !important; /* 最大幅も設定 */
-                min-width: 0 !important; /* 最小幅を解除 */
-                font-size: 14px;
-                padding: 8px;
-                box-sizing: border-box; /* 確実に適用 */
-                /* 日付入力欄のデフォルトスタイルをリセット */
-                -webkit-appearance: none !important; /* iOS Safari */
-                -moz-appearance: none !important; /* Firefox */
-                appearance: none !important; /* 標準 */
-            }
-            .input-group input[type="date"]::-webkit-calendar-picker-indicator {
-                /* カレンダーアイコンのスタイル調整（もし必要なら） */
-                margin-left: auto; /* カレンダーアイコンを右端に */
-                opacity: 1; /* 不透明度 */
-                display: block; /* 確実に表示 */
-                position: relative; /* Safariで正しい位置に表示させるため */
-                right: 0;
-            }
-            .input-group .unit {
-                margin-left: 0;
-                margin-top: 5px;
-                width: 100%; /* モバイルでは単位もフル幅に */
-                text-align: right;
-                order: 1; /* 単位を最後にする */
-            }
-            /* 入力フィールドの表示順を調整 */
-            .input-group label { order: 0; }
-            .input-group input[type="number"], 
-            .input-group input[type="date"], 
-            .input-group select,
-            .input-group input[type="text"] { order: 0; } /* labelと同じオーダーにすることで、flex-growで横幅を広げる */
-            .info-text {
-                padding-left: 0; /* モバイルではインデントをなくす */
-                text-align: left;
-                font-size: 0.8em;
-                order: 2; /* 補足情報を最後にする */
-            }
-
-            button {
-                padding: 12px;
-                font-size: 16px;
-            }
-
-            .result-group {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .result-item {
-                min-width: unset;
-                width: 100%; /* フル幅に */
-                padding: 15px;
-                box-sizing: border-box; 
-            }
-            .result-item strong {
-                font-size: 20px;
-            }
-            .result-item .monthly-avg {
-                font-size: 13px;
-            }
-
-            .comparison-option {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .comparison-option input[type="checkbox"] {
-                margin-bottom: 5px;
-            }
-            .comparison-option label {
-                font-size: 1em;
-            }
-
-            /* 月次詳細テーブルのスタイル調整 */
-            .monthly-breakdown-table-wrapper {
-                overflow-x: auto; 
-                -webkit-overflow-scrolling: touch; 
-                max-height: 400px; 
-            }
-            .monthly-breakdown table {
-                min-width: 600px; /* モバイルでのテーブル最小幅を調整 */
-                font-size: 12px; 
-            }
-            .monthly-breakdown th, .monthly-breakdown td {
-                padding: 8px 5px;
-            }
-            .monthly-breakdown tbody td:first-child,
-            .monthly-breakdown thead th:first-child {
-                min-width: 70px; /* 月の列の最小幅を調整 */
-            }
-
-            .chart-controls {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-            .chart-controls select {
-                width: 100%;
-            }
-            .chart-container {
-                max-width: 100%; /* モバイルでは親要素の100% */
-                height: 300px; /* モバイルでのグラフの高さ */
-            }
-            .disclaimer {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
@@ -493,13 +348,11 @@
         <div class="input-group">
             <label for="startDate">計算開始日</label>
             <input type="date" id="startDate">
-            <span class="unit"></span>
         </div>
 
         <div class="input-group">
             <label for="endDate">計算終了日</label>
             <input type="date" id="endDate">
-            <span class="unit"></span>
         </div>
 
         <hr>
@@ -512,13 +365,11 @@
         </div>
 
         <div class="input-section">
-            
             <div class="vehicle-input-column" id="vehicle1Inputs">
                 <h3>車両 1</h3>
                 <div class="input-group">
                     <label for="vehicle1Name">車両名</label>
                     <input type="text" id="vehicle1Name" value="現在の車">
-                    <span class="unit"></span>
                 </div>
                 <div class="input-group">
                     <label for="loanOption1">ローン計算</label>
@@ -526,7 +377,6 @@
                         <option value="no">計算しない</option>
                         <option value="yes">計算する</option>
                     </select>
-                    <span class="unit"></span>
                 </div>
                 <div id="loanFields1" style="display: none;">
                     <div class="input-group">
@@ -538,7 +388,6 @@
                         <label for="loanInterestRate1">ローン金利</label>
                         <input type="number" id="loanInterestRate1" value="3.5" min="0" step="0.01">
                         <span class="unit">%</span>
-                        <p class="info-text">※年率。例: 3.5%なら3.5を入力</p>
                     </div>
                     <div class="input-group">
                         <label for="loanTermMonths1">返済期間</label>
@@ -546,37 +395,33 @@
                         <span class="unit">ヶ月</span>
                     </div>
                 </div>
-                
+                <div class="input-group">
+                    <label for="fuelType1">燃料タイプ</label>
+                    <select id="fuelType1" onchange="toggleFuelTypeFields(1)">
+                        <option value="gasoline">ガソリン車</option>
+                        <option value="diesel">ディーゼル車</option>
+                        <option value="hybrid">ハイブリッド車</option>
+                        <option value="ev">EV（電気自動車）</option>
+                    </select>
+                </div>
                 <div class="input-group">
                     <label for="classificationType1">分類</label>
                     <select id="classificationType1" onchange="toggle1NumberFields(1)">
                         <option value="passenger">3/5ナンバー（乗用車）</option>
                         <option value="cargo">1ナンバー（貨物車）</option>
                     </select>
-                    <span class="unit"></span>
-                    <p class="info-text">※車検証の「用途」欄、またはナンバープレートの上部にある数字をご確認ください。</p>
-                </div>
-                <div class="input-group">
-                    <label for="fuelType1">燃料タイプ</label>
-                    <select id="fuelType1" onchange="toggleFuelTypeFields(1)">
-                        <option value="gasoline">ガソリン車</option>
-                        <option value="diesel">ディーゼル車</option>
-                    </select>
-                    <span class="unit"></span>
                 </div>
                 <div class="input-group" id="passengerCapacityGroup1" style="display: none;">
                     <label for="passengerCapacity1">乗車定員数</label>
                     <input type="number" id="passengerCapacity1" value="2" min="1">
                     <span class="unit">人</span>
-                    <p class="info-text">※1ナンバー車のみ</p>
                 </div>
                 <div class="input-group" id="maxLoadingCapacityGroup1" style="display: none;">
                     <label for="maxLoadingCapacity1">最大積載量</label>
                     <input type="number" id="maxLoadingCapacity1" value="500" min="0">
                     <span class="unit">kg</span>
-                    <p class="info-text">※1ナンバー車のみ</p>
                 </div>
-                <div class="input-group">
+                <div class="input-group" id="displacementGroup1">
                     <label for="displacement1">排気量</label>
                     <input type="number" id="displacement1" value="1500" min="0">
                     <span class="unit">cc</span>
@@ -589,17 +434,21 @@
                 <div class="input-group">
                     <label for="firstRegistrationDate1">新規車検登録日</label>
                     <input type="date" id="firstRegistrationDate1">
-                    <span class="unit"></span>
+                </div>
+                 <div class="input-group">
+                    <label for="isEcoCar1">エコカー減税対象</label>
+                    <input type="checkbox" id="isEcoCar1">
+                    <p class="info-text">※初回車検時の重量税が免除されます</p>
                 </div>
                 <div class="input-group">
                     <label for="nextInspectionDate1">直近車検満了日</label>
                     <input type="date" id="nextInspectionDate1">
-                    <span class="unit"></span>
                 </div>
                 <div class="input-group">
-                    <label for="inspectionCostPerTime1">車検代</label>
-                    <input type="number" id="inspectionCostPerTime1" value="100000" min="0">
+                    <label for="inspectionCostPerTime1">車検時整備費用</label>
+                    <input type="number" id="inspectionCostPerTime1" value="60000" min="0">
                     <span class="unit">円/回</span>
+                    <p class="info-text">※法定費用（重量税・自賠責・印紙代）を除いた金額</p>
                 </div>
                 <div class="input-group">
                     <label for="voluntaryInsurance1">任意保険料</label>
@@ -616,27 +465,47 @@
                     <input type="number" id="monthlyMileage1" value="800" min="0">
                     <span class="unit">km/月</span>
                 </div>
-                <div class="input-group">
-                    <label for="fuelEfficiency1">実燃費</label>
+                <div class="input-group gas-diesel-hybrid-only" id="fuelEfficiencyGroup1">
+                    <label for="fuelEfficiency1">燃費</label>
                     <input type="number" id="fuelEfficiency1" value="15" min="0.1" step="0.1">
                     <span class="unit">km/L</span>
                 </div>
-                <div class="input-group">
-                    <label for="fuelPrice1">燃料油価格</label>
+                <div class="input-group gas-diesel-hybrid-only" id="fuelPriceGroup1">
+                    <label for="fuelPrice1">燃料価格</label>
                     <input type="number" id="fuelPrice1" value="170" min="0">
                     <span class="unit">円/L</span>
                 </div>
-                <div class="input-group" id="adblueCostGroup1">
+                <div class="input-group ev-only" id="electricityEfficiencyGroup1" style="display: none;">
+                    <label for="electricityEfficiency1">電費</label>
+                    <input type="number" id="electricityEfficiency1" value="6" min="0.1" step="0.1">
+                    <span class="unit">km/kWh</span>
+                </div>
+                 <div class="input-group ev-only" id="electricityPriceGroup1" style="display: none;">
+                    <label for="electricityPrice1">電気料金単価</label>
+                    <input type="number" id="electricityPrice1" value="30" min="0">
+                    <span class="unit">円/kWh</span>
+                </div>
+                <div class="input-group diesel-only" id="adblueCostGroup1" style="display: none;">
                     <label for="adblueCostPerL1">AdBlue費用</label>
                     <input type="number" id="adblueCostPerL1" value="500" min="0">
                     <span class="unit">円/L</span>
-                    <p class="info-text">※AdBlueは10000km走行ごとに10L消費。</p>
+                    <p class="info-text">※10000km走行ごとに10L消費と仮定</p>
                 </div>
-                <div class="input-group">
+                <div class="input-group gas-diesel-hybrid-only" id="oilElementCostGroup1">
                     <label for="oilElementCostPerTime1">オイル・エレメント費用</label>
                     <input type="number" id="oilElementCostPerTime1" value="10000" min="0">
                     <span class="unit">円/回</span>
-                    <p class="info-text" id="oilInfoText1">※目安: 5000km(D) / 10000km(G)</p>
+                    <p class="info-text" id="oilInfoText1">※目安: 5000km(D) / 10000km(G/HV)</p>
+                </div>
+                 <div class="input-group hybrid-ev-only" id="hvBatteryCostGroup1" style="display: none;">
+                    <label for="hvBatteryCost1">駆動用バッテリー費用</label>
+                    <input type="number" id="hvBatteryCost1" value="200000" min="0">
+                    <span class="unit">円/回</span>
+                </div>
+                <div class="input-group hybrid-ev-only" id="hvBatteryCycleGroup1" style="display: none;">
+                    <label for="hvBatteryCycle1">バッテリー交換サイクル</label>
+                    <input type="number" id="hvBatteryCycle1" value="10" min="1">
+                    <span class="unit">年</span>
                 </div>
                 <div class="input-group">
                     <label for="tireCostPerSet1">タイヤ費用</label>
@@ -644,25 +513,28 @@
                     <span class="unit">円/4本</span>
                     <p class="info-text">※目安: 40000km</p>
                 </div>
+                 <div class="input-group">
+                    <label for="otherMaintenanceCost1">その他メンテ費用</label>
+                    <input type="number" id="otherMaintenanceCost1" value="20000" min="0">
+                    <span class="unit">円/年</span>
+                    <p class="info-text">※ブレーキ、補機バッテリー、ワイパー等</p>
+                </div>
             </div>
 
-            
             <div class="vehicle-input-column" id="vehicle2Inputs" style="display: none;">
                 <h3>車両 2</h3>
-                <div class="input-group">
+                 <div class="input-group">
                     <label for="vehicle2Name">車両名</label>
                     <input type="text" id="vehicle2Name" value="買い替え検討車">
-                    <span class="unit"></span>
                 </div>
                 <div class="input-group">
                     <label for="loanOption2">ローン計算</label>
                     <select id="loanOption2" onchange="toggleLoanFields(2)">
                         <option value="no">計算しない</option>
-                        <option value="yes">計算する</option>
+                        <option value="yes" selected>計算する</option>
                     </select>
-                    <span class="unit"></span>
                 </div>
-                <div id="loanFields2" style="display: none;">
+                <div id="loanFields2">
                     <div class="input-group">
                         <label for="loanAmount2">借入額</label>
                         <input type="number" id="loanAmount2" value="3000000" min="0">
@@ -672,7 +544,6 @@
                         <label for="loanInterestRate2">ローン金利</label>
                         <input type="number" id="loanInterestRate2" value="2.8" min="0" step="0.01">
                         <span class="unit">%</span>
-                        <p class="info-text">※年率。例: 3.5%なら3.5を入力</p>
                     </div>
                     <div class="input-group">
                         <label for="loanTermMonths2">返済期間</label>
@@ -680,37 +551,33 @@
                         <span class="unit">ヶ月</span>
                     </div>
                 </div>
-                
+                <div class="input-group">
+                    <label for="fuelType2">燃料タイプ</label>
+                    <select id="fuelType2" onchange="toggleFuelTypeFields(2)">
+                        <option value="gasoline">ガソリン車</option>
+                        <option value="diesel">ディーゼル車</option>
+                        <option value="hybrid" selected>ハイブリッド車</option>
+                        <option value="ev">EV（電気自動車）</option>
+                    </select>
+                </div>
                 <div class="input-group">
                     <label for="classificationType2">分類</label>
                     <select id="classificationType2" onchange="toggle1NumberFields(2)">
                         <option value="passenger">3/5ナンバー（乗用車）</option>
                         <option value="cargo">1ナンバー（貨物車）</option>
                     </select>
-                    <span class="unit"></span>
-                    <p class="info-text">※車検証の「用途」欄、またはナンバープレートの上部にある数字をご確認ください。</p>
-                </div>
-                <div class="input-group">
-                    <label for="fuelType2">燃料タイプ</label>
-                    <select id="fuelType2" onchange="toggleFuelTypeFields(2)">
-                        <option value="gasoline">ガソリン車</option>
-                        <option value="diesel">ディーゼル車</option>
-                    </select>
-                    <span class="unit"></span>
                 </div>
                 <div class="input-group" id="passengerCapacityGroup2" style="display: none;">
                     <label for="passengerCapacity2">乗車定員数</label>
                     <input type="number" id="passengerCapacity2" value="2" min="1">
                     <span class="unit">人</span>
-                    <p class="info-text">※1ナンバー車のみ</p>
                 </div>
                 <div class="input-group" id="maxLoadingCapacityGroup2" style="display: none;">
                     <label for="maxLoadingCapacity2">最大積載量</label>
                     <input type="number" id="maxLoadingCapacity2" value="500" min="0">
                     <span class="unit">kg</span>
-                    <p class="info-text">※1ナンバー車のみ</p>
                 </div>
-                <div class="input-group">
+                <div class="input-group" id="displacementGroup2">
                     <label for="displacement2">排気量</label>
                     <input type="number" id="displacement2" value="2000" min="0">
                     <span class="unit">cc</span>
@@ -723,17 +590,21 @@
                 <div class="input-group">
                     <label for="firstRegistrationDate2">新規車検登録日</label>
                     <input type="date" id="firstRegistrationDate2">
-                    <span class="unit"></span>
+                </div>
+                <div class="input-group">
+                    <label for="isEcoCar2">エコカー減税対象</label>
+                    <input type="checkbox" id="isEcoCar2" checked>
+                    <p class="info-text">※初回車検時の重量税が免除されます</p>
                 </div>
                 <div class="input-group">
                     <label for="nextInspectionDate2">直近車検満了日</label>
                     <input type="date" id="nextInspectionDate2">
-                    <span class="unit"></span>
                 </div>
                 <div class="input-group">
-                    <label for="inspectionCostPerTime2">車検代</label>
-                    <input type="number" id="inspectionCostPerTime2" value="120000" min="0">
+                    <label for="inspectionCostPerTime2">車検時整備費用</label>
+                    <input type="number" id="inspectionCostPerTime2" value="70000" min="0">
                     <span class="unit">円/回</span>
+                    <p class="info-text">※法定費用（重量税・自賠責・印紙代）を除いた金額</p>
                 </div>
                 <div class="input-group">
                     <label for="voluntaryInsurance2">任意保険料</label>
@@ -750,33 +621,57 @@
                     <input type="number" id="monthlyMileage2" value="800" min="0">
                     <span class="unit">km/月</span>
                 </div>
-                <div class="input-group">
-                    <label for="fuelEfficiency2">実燃費</label>
-                    <input type="number" id="fuelEfficiency2" value="12" min="0.1" step="0.1">
+                <div class="input-group gas-diesel-hybrid-only" id="fuelEfficiencyGroup2">
+                    <label for="fuelEfficiency2">燃費</label>
+                    <input type="number" id="fuelEfficiency2" value="22" min="0.1" step="0.1">
                     <span class="unit">km/L</span>
                 </div>
-                <div class="input-group">
-                    <label for="fuelPrice2">燃料油価格</label>
+                <div class="input-group gas-diesel-hybrid-only" id="fuelPriceGroup2">
+                    <label for="fuelPrice2">燃料価格</label>
                     <input type="number" id="fuelPrice2" value="170" min="0">
                     <span class="unit">円/L</span>
                 </div>
-                <div class="input-group" id="adblueCostGroup2">
+                <div class="input-group ev-only" id="electricityEfficiencyGroup2" style="display: none;">
+                    <label for="electricityEfficiency2">電費</label>
+                    <input type="number" id="electricityEfficiency2" value="6" min="0.1" step="0.1">
+                    <span class="unit">km/kWh</span>
+                </div>
+                 <div class="input-group ev-only" id="electricityPriceGroup2" style="display: none;">
+                    <label for="electricityPrice2">電気料金単価</label>
+                    <input type="number" id="electricityPrice2" value="30" min="0">
+                    <span class="unit">円/kWh</span>
+                </div>
+                <div class="input-group diesel-only" id="adblueCostGroup2" style="display: none;">
                     <label for="adblueCostPerL2">AdBlue費用</label>
                     <input type="number" id="adblueCostPerL2" value="500" min="0">
                     <span class="unit">円/L</span>
-                    <p class="info-text">※AdBlueは10000km走行ごとに10L消費。</p>
                 </div>
-                <div class="input-group">
+                <div class="input-group gas-diesel-hybrid-only" id="oilElementCostGroup2">
                     <label for="oilElementCostPerTime2">オイル・エレメント費用</label>
                     <input type="number" id="oilElementCostPerTime2" value="12000" min="0">
                     <span class="unit">円/回</span>
-                    <p class="info-text" id="oilInfoText2">※目安: 5000km(D) / 10000km(G)</p>
+                    <p class="info-text" id="oilInfoText2">※目安: 5000km(D) / 10000km(G/HV)</p>
+                </div>
+                 <div class="input-group hybrid-ev-only" id="hvBatteryCostGroup2">
+                    <label for="hvBatteryCost2">駆動用バッテリー費用</label>
+                    <input type="number" id="hvBatteryCost2" value="250000" min="0">
+                    <span class="unit">円/回</span>
+                </div>
+                <div class="input-group hybrid-ev-only" id="hvBatteryCycleGroup2">
+                    <label for="hvBatteryCycle2">バッテリー交換サイクル</label>
+                    <input type="number" id="hvBatteryCycle2" value="10" min="1">
+                    <span class="unit">年</span>
                 </div>
                 <div class="input-group">
                     <label for="tireCostPerSet2">タイヤ費用</label>
                     <input type="number" id="tireCostPerSet2" value="80000" min="0">
                     <span class="unit">円/4本</span>
-                    <p class="info-text">※目安: 40000km</p>
+                </div>
+                <div class="input-group">
+                    <label for="otherMaintenanceCost2">その他メンテ費用</label>
+                    <input type="number" id="otherMaintenanceCost2" value="30000" min="0">
+                    <span class="unit">円/年</span>
+                     <p class="info-text">※ブレーキ、補機バッテリー、ワイパー等</p>
                 </div>
             </div>
         </div>
@@ -798,24 +693,22 @@
                 </div>
             </div>
             <hr>
-            <h3>累計費用推移グラフ</h3>
+            <h3>費用推移グラフ</h3>
             <div class="chart-controls">
                 <label for="chartTypeSelect">グラフ表示項目:</label>
                 <select id="chartTypeSelect" onchange="renderChart(window.allCalculatedMonthlyCosts)">
                     <option value="total">総費用</option>
                     <option value="loan">ローン</option>
-                    <option value="fuel">ガソリン</option>
+                    <option value="fuel">燃料・電気代</option>
                     <option value="autoTax">自動車税</option>
-                    <option value="weightTax">重量税</option>
-                    <option value="inspection">車検</option>
+                    <option value="inspection">車検関連費用</option>
                     <option value="insurance">任意保険</option>
                     <option value="parking">駐車場</option>
-                    <option value="adblue">AdBlue</option>
-                    <option value="oilElement">オイル・エレメント</option>
-                    <option value="tire">タイヤ</option>
+                    <option value="maintenance">メンテナンス</option>
                 </select>
             </div>
             <div class="chart-container">
+                <button class="csv-export-btn" onclick="downloadCSV()">CSV出力</button>
                 <canvas id="cumulativeCostChart"></canvas>
             </div>
             <hr>
@@ -823,755 +716,410 @@
                 <span>月ごとの費用内訳を表示/非表示</span> <span class="arrow">▶</span>
             </button>
             <div class="monthly-breakdown-container" id="monthlyBreakdownTables">
-                
-            </div>
+                </div>
         </div>
 
-        <p class="disclaimer">※この計算結果は目安です。実際の費用は、車種、地域、エコカー減税の有無、ローンの契約内容、走行条件などにより大きく異なります。また、税額は一般的な金額に基づいています。</p>
+        <p class="disclaimer">※この計算結果は一般的な条件に基づく目安です。実際の費用は、車種、地域、運転スタイル、各種契約内容により大きく異なります。税額は2024年時点の標準税率を参考にし、重課税も考慮していますが、エコカー減税の詳細は簡略化しています。</p>
     </div>
 
     <script>
-        let cumulativeCostChart; // Chart.jsのインスタンスを保持する変数
-        window.allCalculatedMonthlyCosts = []; // 計算結果をグローバル変数で保持
+        let cumulativeCostChart;
+        window.allCalculatedMonthlyCosts = [];
 
-        // 日数を取得するヘルパー関数
         function getDaysInMonth(year, month) {
             return new Date(year, month + 1, 0).getDate();
         }
-
-        // フォーマット関数（数値にカンマを追加）
         function formatNumber(num) {
             return Math.round(num).toLocaleString();
         }
 
-        // 分類に応じて入力フィールドと補足情報の表示を切り替える
-        function toggle1NumberFields(vehicleNum) {
-            const classificationType = document.getElementById(`classificationType${vehicleNum}`).value;
-            const passengerCapacityGroup = document.getElementById(`passengerCapacityGroup${vehicleNum}`);
-            const maxLoadingCapacityGroup = document.getElementById(`maxLoadingCapacityGroup${vehicleNum}`);
-
-            if (classificationType === 'cargo') { 
-                passengerCapacityGroup.style.display = 'flex'; 
-                maxLoadingCapacityGroup.style.display = 'flex'; 
-            } else { 
-                passengerCapacityGroup.style.display = 'none';
-                maxLoadingCapacityGroup.style.display = 'none';
+        function getAutoTax(displacement, elapsedYears, fuelType, classificationType, maxLoadingCapacity) {
+            let tax = 0;
+            if (classificationType === 'cargo') {
+                if (maxLoadingCapacity <= 1000) {
+                         if (displacement <= 1000) tax = 8000; else if (displacement <= 1500) tax = 11500; else tax = 14500;
+                } else { tax = 11000 + Math.max(0, Math.ceil((maxLoadingCapacity-1000)/1000)) * 3000; }
+            } else {
+                if (displacement <= 1000) tax = 25000;
+                else if (displacement <= 1500) tax = 30500; else if (displacement <= 2000) tax = 36000;
+                else if (displacement <= 2500) tax = 43500; else if (displacement <= 3000) tax = 50000;
+                else if (displacement <= 3500) tax = 57000; else if (displacement <= 4000) tax = 65500;
+                else if (displacement <= 4500) tax = 75500; else if (displacement <= 6000) tax = 87000;
+                else tax = 110000;
             }
+            if (fuelType === 'diesel' && elapsedYears >= 11) { tax *= 1.15; }
+            if ((fuelType === 'gasoline' || fuelType === 'hybrid') && elapsedYears >= 13) { tax *= 1.15; }
+            return tax;
         }
 
-        // ローン計算の選択に応じて入力フィールドの表示を切り替える
-        function toggleLoanFields(vehicleNum) {
-            const loanOption = document.getElementById(`loanOption${vehicleNum}`).value;
-            const loanFields = document.getElementById(`loanFields${vehicleNum}`);
-
-            if (loanOption === 'yes') { 
-                loanFields.style.display = 'block'; 
-            } else { 
-                loanFields.style.display = 'none';
-                // ローン計算しない場合は値をリセット
-                document.getElementById(`loanAmount${vehicleNum}`).value = 0;
-                document.getElementById(`loanInterestRate${vehicleNum}`).value = 0;
-                document.getElementById(`loanTermMonths${vehicleNum}`).value = 0;
+        function getWeightTax(weight, elapsedYears, isEcoCar, isFirstInspection, classificationType) {
+            if (isEcoCar && isFirstInspection) return 0;
+            
+            let taxPerYear = 0;
+            if (classificationType === 'cargo') {
+                taxPerYear = 2500 * Math.ceil(weight/1000);
+                 if (elapsedYears >= 13) taxPerYear = 3400 * Math.ceil(weight/1000);
+                 if (elapsedYears >= 18) taxPerYear = 3900 * Math.ceil(weight/1000);
+            } else {
+                 taxPerYear = 4100 * Math.ceil(weight/500);
+                 if (elapsedYears >= 13) taxPerYear = 5700 * Math.ceil(weight/500);
+                 if (elapsedYears >= 18) taxPerYear = 6300 * Math.ceil(weight/500);
             }
+            return taxPerYear;
         }
 
-        // 燃料タイプに応じてAdBlueとオイル交換の情報を切り替える
-        function toggleFuelTypeFields(vehicleNum) {
-            const fuelType = document.getElementById(`fuelType${vehicleNum}`).value;
-            const adblueCostGroup = document.getElementById(`adblueCostGroup${vehicleNum}`);
-            const oilInfoText = document.getElementById(`oilInfoText${vehicleNum}`);
+        function getCompulsoryInsurance(classificationType) {
+            return classificationType === 'cargo' ? 12850 : 17650;
+        }
+        
+        function getStampDuty() { return 1800; }
 
-            if (fuelType === 'gasoline') {
-                adblueCostGroup.style.display = 'none';
-                document.getElementById(`adblueCostPerL${vehicleNum}`).value = 0; // AdBlueコストをリセット
-                oilInfoText.textContent = '※目安: 10000km(G)';
-            } else { 
-                adblueCostGroup.style.display = 'flex';
-                oilInfoText.textContent = '※目安: 5000km(D)';
-            }
+        function toggleLoanFields(num) {
+            document.getElementById(`loanFields${num}`).style.display = document.getElementById(`loanOption${num}`).value === 'yes' ? 'block' : 'none';
+        }
+        function toggle1NumberFields(num) {
+            const isCargo = document.getElementById(`classificationType${num}`).value === 'cargo';
+            document.getElementById(`passengerCapacityGroup${num}`).style.display = isCargo ? 'flex' : 'none';
+            document.getElementById(`maxLoadingCapacityGroup${num}`).style.display = isCargo ? 'flex' : 'none';
         }
 
-        // 月次費用内訳の表示/非表示を切り替える関数
+        function toggleFuelTypeFields(num) {
+            const fuelType = document.getElementById(`fuelType${num}`).value;
+            const groups = {
+                'gas-diesel-hybrid-only': ['gasoline', 'diesel', 'hybrid'],
+                'ev-only': ['ev'],
+                'diesel-only': ['diesel'],
+                'hybrid-ev-only': ['hybrid', 'ev']
+            };
+
+            for (const className in groups) {
+                const elements = document.getElementById(`vehicle${num}Inputs`).querySelectorAll(`.${className}`);
+                elements.forEach(el => {
+                    el.style.display = groups[className].includes(fuelType) ? 'flex' : 'none';
+                });
+            }
+            
+            document.getElementById(`displacementGroup${num}`).style.display = (fuelType !== 'ev') ? 'flex' : 'none';
+            
+            const oilInfo = document.getElementById(`oilInfoText${num}`);
+            if (oilInfo) {
+                if(fuelType === 'diesel') oilInfo.textContent = '※目安: 5000km(D)';
+                else oilInfo.textContent = '※目安: 10000km(G/HV)';
+            }
+        }
+        
+        function toggleVehicleComparison() {
+            const isChecked = document.getElementById('compareVehicles').checked;
+            document.getElementById('vehicle2Inputs').style.display = isChecked ? 'block' : 'none';
+            document.getElementById('vehicle2ResultItem').style.display = isChecked ? 'block' : 'none';
+            if (isChecked) {
+                toggleFuelTypeFields(2);
+                toggleLoanFields(2);
+                toggle1NumberFields(2);
+            }
+            calculateCarCosts();
+        }
+        
         function toggleMonthlyBreakdown() {
             const container = document.getElementById('monthlyBreakdownTables');
             const button = document.querySelector('.toggle-section-button');
-            if (container.classList.contains('expanded')) {
-                container.classList.remove('expanded');
-                button.classList.remove('expanded');
-                button.querySelector('.arrow').textContent = '▶';
-            } else {
-                container.classList.add('expanded');
-                button.classList.add('expanded');
-                button.querySelector('.arrow').textContent = '▼';
-            }
-        }
-
-        // 2台比較の表示/非表示を切り替える関数
-        function toggleVehicleComparison() {
-            const compareCheckbox = document.getElementById('compareVehicles');
-            const vehicle2Inputs = document.getElementById('vehicle2Inputs');
-            const vehicle2ResultItem = document.getElementById('vehicle2ResultItem');
-            
-            if (compareCheckbox.checked) {
-                vehicle2Inputs.style.display = 'block';
-                vehicle2ResultItem.style.display = 'block';
-            } else {
-                vehicle2Inputs.style.display = 'none';
-                vehicle2ResultItem.style.display = 'none';
-            }
-            // 表示切り替え後に再計算
-            calculateCarCosts();
+            const isExpanded = container.classList.toggle('expanded');
+            button.classList.toggle('expanded', isExpanded);
+            button.querySelector('.arrow').textContent = isExpanded ? '▼' : '▶';
         }
 
         function calculateCarCosts() {
             const startDateStr = document.getElementById('startDate').value;
             const endDateStr = document.getElementById('endDate').value;
-            const compareVehicles = document.getElementById('compareVehicles').checked;
-
-            if (!startDateStr || !endDateStr) {
-                alert('計算開始日と計算終了日を入力してください。');
-                return;
-            }
+            if (!startDateStr || !endDateStr) { alert('計算開始日と計算終了日を入力してください。'); return; }
 
             const startDate = new Date(startDateStr + 'T00:00:00');
             const endDate = new Date(endDateStr + 'T00:00:00');
+            if (startDate > endDate) { alert('計算終了日は計算開始日より後の日付を設定してください。'); return; }
 
-            if (startDate.getTime() > endDate.getTime()) {
-                alert('計算終了日は計算開始日より後の日付を設定してください。');
-                return;
-            }
-
-            // 計算期間の月数を取得
-            let totalMonths = 0;
-            let tempStartDate = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
-            let tempEndDate = new Date(endDate.getFullYear(), endDate.getMonth(), 1);
-
-            while(tempStartDate <= tempEndDate) {
-                totalMonths++;
-                tempStartDate.setMonth(tempStartDate.getMonth() + 1);
-            }
+            let totalMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth()) + 1;
             
-            const vehicleData = [];
-            const numberOfVehicles = compareVehicles ? 2 : 1;
+            const numberOfVehicles = document.getElementById('compareVehicles').checked ? 2 : 1;
+            const allMonthlyCosts = [];
 
             for (let i = 1; i <= numberOfVehicles; i++) {
-                const vehicleName = document.getElementById(`vehicle${i}Name`).value || `車両 ${i}`;
-                const loanOption = document.getElementById(`loanOption${i}`).value;
-                const loanAmount = parseFloat(document.getElementById(`loanAmount${i}`).value) || 0;
-                const loanInterestRateAnnual = parseFloat(document.getElementById(`loanInterestRate${i}`).value) / 100 || 0;
-                const loanTermMonths = parseFloat(document.getElementById(`loanTermMonths${i}`).value) || 0;
-
-                const classificationType = document.getElementById(`classificationType${i}`).value;
-                const fuelType = document.getElementById(`fuelType${i}`).value;
-                const passengerCapacity = parseFloat(document.getElementById(`passengerCapacity${i}`).value) || 0;
-                const maxLoadingCapacity = parseFloat(document.getElementById(`maxLoadingCapacity${i}`).value) || 0;
+                const v = {
+                    name: document.getElementById(`vehicle${i}Name`).value || `車両 ${i}`,
+                    loanOption: document.getElementById(`loanOption${i}`).value,
+                    loanAmount: parseFloat(document.getElementById(`loanAmount${i}`).value) || 0,
+                    loanInterestRate: parseFloat(document.getElementById(`loanInterestRate${i}`).value) / 100 || 0,
+                    loanTermMonths: parseInt(document.getElementById(`loanTermMonths${i}`).value) || 0,
+                    fuelType: document.getElementById(`fuelType${i}`).value,
+                    classificationType: document.getElementById(`classificationType${i}`).value,
+                    maxLoadingCapacity: parseFloat(document.getElementById(`maxLoadingCapacity${i}`).value) || 0,
+                    displacement: parseFloat(document.getElementById(`displacement${i}`).value) || 0,
+                    weight: parseFloat(document.getElementById(`weight${i}`).value) || 0,
+                    firstRegDateStr: document.getElementById(`firstRegistrationDate${i}`).value,
+                    isEcoCar: document.getElementById(`isEcoCar${i}`).checked,
+                    nextInspectionDateStr: document.getElementById(`nextInspectionDate${i}`).value,
+                    inspectionBaseCost: parseFloat(document.getElementById(`inspectionCostPerTime${i}`).value) || 0,
+                    voluntaryInsurance: parseFloat(document.getElementById(`voluntaryInsurance${i}`).value) || 0,
+                    parkingCost: parseFloat(document.getElementById(`parkingCostMonthly${i}`).value) || 0,
+                    monthlyMileage: parseFloat(document.getElementById(`monthlyMileage${i}`).value) || 0,
+                    fuelEfficiency: parseFloat(document.getElementById(`fuelEfficiency${i}`).value) || 1,
+                    fuelPrice: parseFloat(document.getElementById(`fuelPrice${i}`).value) || 0,
+                    elecEfficiency: parseFloat(document.getElementById(`electricityEfficiency${i}`).value) || 1,
+                    elecPrice: parseFloat(document.getElementById(`electricityPrice${i}`).value) || 0,
+                    adblueCost: parseFloat(document.getElementById(`adblueCostPerL${i}`).value) || 0,
+                    oilCost: parseFloat(document.getElementById(`oilElementCostPerTime${i}`).value) || 0,
+                    hvBatteryCost: parseFloat(document.getElementById(`hvBatteryCost${i}`).value) || 0,
+                    hvBatteryCycle: parseInt(document.getElementById(`hvBatteryCycle${i}`).value) || 10,
+                    tireCost: parseFloat(document.getElementById(`tireCostPerSet${i}`).value) || 0,
+                    otherMaintenanceCost: parseFloat(document.getElementById(`otherMaintenanceCost${i}`).value) || 0,
+                };
                 
-                const displacement = parseFloat(document.getElementById(`displacement${i}`).value) || 0;
-                const weight = parseFloat(document.getElementById(`weight${i}`).value) || 0;
-                const firstRegistrationDateStr = document.getElementById(`firstRegistrationDate${i}`).value;
-                const nextInspectionDateStr = document.getElementById(`nextInspectionDate${i}`).value; 
-                const inspectionCostPerTime = parseFloat(document.getElementById(`inspectionCostPerTime${i}`).value) || 0;
-                const voluntaryInsurance = parseFloat(document.getElementById(`voluntaryInsurance${i}`).value) || 0;
-                const parkingCostMonthly = parseFloat(document.getElementById(`parkingCostMonthly${i}`).value) || 0;
-                const monthlyMileage = parseFloat(document.getElementById(`monthlyMileage${i}`).value) || 0;
-                const fuelEfficiency = parseFloat(document.getElementById(`fuelEfficiency${i}`).value) || 0;
-                const fuelPrice = parseFloat(document.getElementById(`fuelPrice${i}`).value) || 0;
-                const adblueCostPerL = parseFloat(document.getElementById(`adblueCostPerL${i}`).value) || 0;
-                const oilElementCostPerTime = parseFloat(document.getElementById(`oilElementCostPerTime${i}`).value) || 0;
-                const tireCostPerSet = parseFloat(document.getElementById(`tireCostPerSet${i}`).value) || 0;
-
-                const firstRegDate = firstRegistrationDateStr ? new Date(firstRegistrationDateStr + 'T00:00:00') : null;
-                if (!firstRegDate) {
-                    alert(`${vehicleName}の新規車検登録日を入力してください。`);
-                    return;
-                }
-
-                let calculatedAutoTaxAnnual = 0;
-                // 自動車税の計算ロジック
-                if (classificationType === 'cargo') {
-                    if (maxLoadingCapacity <= 1000) { 
-                        if (displacement <= 1000) calculatedAutoTaxAnnual = 8000;
-                        else if (displacement <= 1500) calculatedAutoTaxAnnual = 11500;
-                        else if (displacement <= 2000) calculatedAutoTaxAnnual = 14500;
-                        else if (displacement <= 2500) calculatedAutoTaxAnnual = 17500;
-                        else if (displacement <= 3000) calculatedAutoTaxAnnual = 20500;
-                        else if (displacement <= 3500) calculatedAutoTaxAnnual = 23500;
-                        else if (displacement <= 4000) calculatedAutoTaxAnnual = 26500;
-                        else if (displacement <= 4500) calculatedAutoTaxAnnual = 30000;
-                        else if (displacement <= 5000) calculatedAutoTaxAnnual = 33000;
-                        else calculatedAutoTaxAnnual = 37000; 
-                    } else if (maxLoadingCapacity <= 2000) { 
-                        if (displacement <= 1000) calculatedAutoTaxAnnual = 11000;
-                        else if (displacement <= 1500) calculatedAutoTaxAnnual = 14500;
-                        else if (displacement <= 2000) calculatedAutoTaxAnnual = 17500;
-                        else if (displacement <= 2500) calculatedAutoTaxAnnual = 20500;
-                        else if (displacement <= 3000) calculatedAutoTaxAnnual = 23500;
-                        else if (displacement <= 3500) calculatedAutoTaxAnnual = 26500;
-                        else if (displacement <= 4000) calculatedAutoTaxAnnual = 30000;
-                        else if (displacement <= 4500) calculatedAutoTaxAnnual = 33000;
-                        else if (displacement <= 5000) calculatedAutoTaxAnnual = 37000;
-                        else calculatedAutoTaxAnnual = 40500; 
-                    } else { 
-                        calculatedAutoTaxAnnual = 25000; 
-                    }
-                } else { 
-                    if (displacement <= 500) calculatedAutoTaxAnnual = 25000;
-                    else if (displacement <= 1000) calculatedAutoTaxAnnual = 29500;
-                    else if (displacement <= 1500) calculatedAutoTaxAnnual = 34500;
-                    else if (displacement <= 2000) calculatedAutoTaxAnnual = 39500;
-                    else if (displacement <= 2500) calculatedAutoTaxAnnual = 45000;
-                    else if (displacement <= 3000) calculatedAutoTaxAnnual = 51000;
-                    else if (displacement <= 3500) calculatedAutoTaxAnnual = 58000;
-                    else if (displacement <= 4000) calculatedAutoTaxAnnual = 66500;
-                    else if (displacement <= 4500) calculatedAutoTaxAnnual = 76000;
-                    else if (displacement <= 6000) calculatedAutoTaxAnnual = 87000;
-                    else if (displacement > 6000) calculatedAutoTaxAnnual = 111000;
-                }
-
-                let weightTaxAnnual = 0; 
-                let weightTaxPerTwoYears = 0; 
-
-                // 重量税の計算ロジック
-                if (classificationType === 'cargo') { 
-                    if (maxLoadingCapacity <= 1000) { 
-                        if (weight <= 500) weightTaxAnnual = 2500; 
-                        else if (weight <= 1000) weightTaxAnnual = 5000; 
-                        else if (weight <= 1500) weightTaxAnnual = 7500; 
-                        else if (weight <= 2000) weightTaxAnnual = 10000; 
-                        else if (weight <= 2500) weightTaxAnnual = 12500; 
-                        else if (weight <= 3000) weightTaxAnnual = 15000; 
-                        else weightTaxAnnual = 15000 + (Math.ceil((weight - 3000) / 500) * 2500);
-                    } else if (maxLoadingCapacity <= 2000) { 
-                        if (weight <= 1000) weightTaxAnnual = 6600;
-                        else if (weight <= 2000) weightTaxAnnual = 13200;
-                        else weightTaxAnnual = 13200 + (Math.ceil((weight - 2000) / 1000) * 6600); 
-                    } else { 
-                        weightTaxAnnual = 20000; 
-                    }
-                } else { 
-                    if (weight > 0) {
-                        if (weight <= 500) weightTaxPerTwoYears = 8200;
-                        else if (weight <= 1000) weightTaxPerTwoYears = 16400;
-                        else if (weight <= 1500) weightTaxPerTwoYears = 24600;
-                        else if (weight <= 2000) weightTaxPerTwoYears = 32800;
-                        else if (weight <= 2500) weightTaxPerTwoYears = 41000;
-                        else {
-                            weightTaxPerTwoYears = 41000 + (Math.ceil((weight - 2500) / 500) * 8200);
-                        }
-                    }
-                }
+                const firstRegDate = v.firstRegDateStr ? new Date(v.firstRegDateStr + 'T00:00:00') : null;
+                if (!firstRegDate) { alert(`${v.name}の新規車検登録日を入力してください。`); return; }
 
                 let monthlyLoanPayment = 0;
-                if (loanOption === 'yes' && loanAmount > 0 && loanTermMonths > 0) {
-                    const loanMonthlyInterestRate = loanInterestRateAnnual / 12;
-                    if (loanMonthlyInterestRate > 0) {
-                        monthlyLoanPayment = loanAmount * loanMonthlyInterestRate * Math.pow(1 + loanMonthlyInterestRate, loanTermMonths) / (Math.pow(1 + loanMonthlyInterestRate, loanTermMonths) - 1);
-                    } else {
-                        monthlyLoanPayment = loanAmount / loanTermMonths;
-                    }
+                if (v.loanOption === 'yes' && v.loanAmount > 0) {
+                    const r = v.loanInterestRate / 12;
+                    monthlyLoanPayment = r > 0 ? (v.loanAmount * r * Math.pow(1 + r, v.loanTermMonths)) / (Math.pow(1 + r, v.loanTermMonths) - 1) : v.loanAmount / v.loanTermMonths;
                 }
-
-                vehicleData.push({
-                    name: vehicleName,
-                    loanOption,
-                    loanAmount,
-                    loanInterestRateAnnual,
-                    loanTermMonths,
-                    classificationType,
-                    fuelType,
-                    passengerCapacity,
-                    maxLoadingCapacity,
-                    displacement,
-                    weight,
-                    firstRegistrationDateStr,
-                    nextInspectionDateStr,
-                    inspectionCostPerTime,
-                    voluntaryInsurance,
-                    parkingCostMonthly,
-                    monthlyMileage,
-                    fuelEfficiency,
-                    fuelPrice,
-                    adblueCostPerL,
-                    oilElementCostPerTime,
-                    tireCostPerSet,
-                    calculatedAutoTaxAnnual,
-                    weightTaxAnnual,
-                    weightTaxPerTwoYears,
-                    monthlyLoanPayment
-                });
-            }
-
-            const allMonthlyCosts = []; 
-
-            for (let v = 0; v < numberOfVehicles; v++) {
-                const vehicle = vehicleData[v];
+                
                 const monthlyCostsForVehicle = [];
-                let totalOverallCostForVehicle = 0;
-                let totalMileageFromRegistration = 0;
+                let totalMileage = 0;
+                let loanMonthCounter = 0;
 
-                const firstRegDate = new Date(vehicle.firstRegistrationDateStr + 'T00:00:00');
-                
-                const oilExchangeIntervalKm = (vehicle.fuelType === 'gasoline') ? 10000 : 5000;
-                const tireLifeKm = 40000;
-                const oilElementExchangeRatio = 2; 
-                const adblueIntervalKm = 10000;
-                const adblueAmountPerRefill = 10;
-
-                const inspectionDates = [];
-                if (firstRegDate) {
-                    let currentInspectionDate;
-                    const nextInspectionDateInput = vehicle.nextInspectionDateStr ? new Date(vehicle.nextInspectionDateStr + 'T00:00:00') : null;
-                    
-                    // 「直近車検満了日」が計算開始日より未来であれば、それを次回車検予定日として起点にする
-                    if (nextInspectionDateInput && nextInspectionDateInput.getTime() >= startDate.getTime()) {
-                        currentInspectionDate = new Date(nextInspectionDateInput);
-                    } else {
-                        // そうでなければ、「新規車検登録日」から初回車検日を計算し、それが計算開始日以降になるまでサイクルを進める
-                        currentInspectionDate = new Date(firstRegDate);
-                        let initialInspectionYears = (vehicle.classificationType === 'cargo') ? 2 : 3; 
-                        currentInspectionDate.setFullYear(currentInspectionDate.getFullYear() + initialInspectionYears);
-
-                        // 計算開始日より前の車検日をスキップし、計算期間内の最初の車検日を探す
-                        while (currentInspectionDate.getTime() < startDate.getTime()) {
-                            let cycleInterval = (vehicle.classificationType === 'cargo') ? 1 : 2; 
-                            currentInspectionDate.setFullYear(currentInspectionDate.getFullYear() + cycleInterval);
-                        }
-                    }
-
-                    // 計算開始日以降の車検日を生成
-                    while (currentInspectionDate.getTime() <= endDate.getTime() + (365 * 24 * 60 * 60 * 1000 * 2)) { // 終了日より少し先まで検査日を生成
-                        // ここで月日も考慮して、その月の車検として正確に登録
-                        inspectionDates.push(new Date(currentInspectionDate.getFullYear(), currentInspectionDate.getMonth(), 1)); // 月初日を登録
-                        let cycleInterval = (vehicle.classificationType === 'cargo') ? 1 : 2; 
-                        currentInspectionDate.setFullYear(currentInspectionDate.getFullYear() + cycleInterval);
-                    }
-                }
-                
-                let tempDate = new Date(firstRegDate.getFullYear(), firstRegDate.getMonth(), 1);
-                while (tempDate.getTime() < new Date(startDate.getFullYear(), startDate.getMonth(), 1).getTime()) {
-                    totalMileageFromRegistration += vehicle.monthlyMileage; 
-                    tempDate.setMonth(tempDate.getMonth() + 1);
-                }
-
-                let currentMonthIter = new Date(startDate.getFullYear(), startDate.getMonth(), 1); 
-                let loanMonthCounter = 0; 
-
-                while (currentMonthIter.getTime() <= endDate.getTime()) {
+                let currentMonthIter = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
+                while (currentMonthIter <= endDate) {
                     const year = currentMonthIter.getFullYear();
-                    const month = currentMonthIter.getMonth(); 
-                    const daysInMonth = getDaysInMonth(year, month);
+                    const month = currentMonthIter.getMonth();
                     
-                    const monthStart = new Date(year, month, 1);
-                    const monthEnd = new Date(year, month, daysInMonth);
+                    const elapsedYears = year - firstRegDate.getFullYear() + (month >= firstRegDate.getMonth() ? 0 : -1);
 
-                    const effectiveStart = new Date(Math.max(startDate.getTime(), monthStart.getTime()));
-                    const effectiveEnd = new Date(Math.min(endDate.getTime(), monthEnd.getTime()));
+                    const detail = { date: `${year}年${(month + 1).toString().padStart(2, '0')}月`, loan: 0, fuel: 0, autoTax: 0, inspection: 0, insurance: 0, parking: 0, maintenance: 0, total: 0 };
 
-                    let periodDaysInMonth = 0;
-                    if (effectiveStart.getTime() <= effectiveEnd.getTime()) {
-                        periodDaysInMonth = (effectiveEnd.getTime() - effectiveStart.getTime()) / (1000 * 60 * 60 * 24) + 1;
+                    if (v.loanOption === 'yes' && loanMonthCounter < v.loanTermMonths) {
+                        detail.loan = monthlyLoanPayment;
+                        loanMonthCounter++;
+                    }
+
+                    if (v.fuelType === 'ev') {
+                        detail.fuel = (v.monthlyMileage / v.elecEfficiency) * v.elecPrice;
                     } else {
-                        currentMonthIter.setMonth(currentMonthIter.getMonth() + 1);
-                        continue; 
-                    }
-
-                    const monthlyDetail = {
-                        date: `${year}年${(month + 1).toString().padStart(2, '0')}月`,
-                        loan: 0,
-                        fuel: 0,
-                        autoTax: 0,
-                        weightTax: 0,
-                        inspection: 0,
-                        insurance: 0,
-                        parking: 0,
-                        adblue: 0,
-                        oilElement: 0,
-                        tire: 0,
-                        total: 0
-                    };
-
-                    const actualMonthlyMileage = (vehicle.monthlyMileage / daysInMonth) * periodDaysInMonth;
-                    const prevTotalMileageFromRegistration = totalMileageFromRegistration; 
-                    totalMileageFromRegistration += actualMonthlyMileage; 
-
-                    if (vehicle.loanOption === 'yes' && vehicle.monthlyLoanPayment > 0 && loanMonthCounter < vehicle.loanTermMonths) {
-                        monthlyDetail.loan = monthlyDetail.loan + vehicle.monthlyLoanPayment;
-                        loanMonthCounter++; 
-                    }
-
-                    if (vehicle.fuelEfficiency > 0 && actualMonthlyMileage > 0) {
-                        const fuelConsumption = actualMonthlyMileage / vehicle.fuelEfficiency;
-                        monthlyDetail.fuel = fuelConsumption * vehicle.fuelPrice;
-                    }
-
-                    // 自動車税は毎年4月（month === 3）に発生
-                    if (month === 3 && vehicle.calculatedAutoTaxAnnual > 0) { 
-                        monthlyDetail.autoTax = vehicle.calculatedAutoTaxAnnual;
-                    }
-
-                    for (const inspDate of inspectionDates) {
-                        const inspMoment = new Date(inspDate.getFullYear(), inspDate.getMonth(), 1); 
-                        if (monthStart.getFullYear() === inspMoment.getFullYear() && monthStart.getMonth() === inspMoment.getMonth()) {
-                            monthlyDetail.inspection += vehicle.inspectionCostPerTime;
-                            
-                            if (vehicle.classificationType === 'cargo') { 
-                                monthlyDetail.weightTax += vehicle.weightTaxAnnual; 
-                            } else { 
-                                monthlyDetail.weightTax += vehicle.weightTaxPerTwoYears; 
-                            }
-                            break; 
-                        }
+                        detail.fuel = (v.monthlyMileage / v.fuelEfficiency) * v.fuelPrice;
                     }
                     
-                    // 任意保険料は毎年1月（month === 0）に発生と仮定
-                    if (month === 0 && vehicle.voluntaryInsurance > 0) { 
-                        monthlyDetail.insurance = vehicle.voluntaryInsurance;
+                    if (month === 3) {
+                        detail.autoTax = getAutoTax(v.displacement, elapsedYears, v.fuelType, v.classificationType, v.maxLoadingCapacity);
+                    }
+                    
+                    if (month === 0) { detail.insurance = v.voluntaryInsurance; }
+
+                    detail.parking = v.parkingCost;
+
+                    detail.maintenance += v.otherMaintenanceCost / 12;
+                    if ((v.fuelType === 'hybrid' || v.fuelType === 'ev') && elapsedYears > 0 && elapsedYears % v.hvBatteryCycle === 0) {
+                         detail.maintenance += v.hvBatteryCost / 12;
                     }
 
-                    monthlyDetail.parking = (vehicle.parkingCostMonthly / daysInMonth) * periodDaysInMonth;
+                    const prevTotalMileage = totalMileage;
+                    totalMileage += v.monthlyMileage;
+                    if (v.fuelType === 'diesel' && Math.floor(totalMileage / 10000) > Math.floor(prevTotalMileage / 10000)) {
+                        detail.maintenance += (Math.floor(totalMileage / 10000) - Math.floor(prevTotalMileage / 10000)) * 10 * v.adblueCost;
+                    }
+                    const oilInterval = (v.fuelType === 'diesel') ? 5000 : 10000;
+                    if ((v.fuelType !== 'ev') && Math.floor(totalMileage / oilInterval) > Math.floor(prevTotalMileage / oilInterval)) {
+                        detail.maintenance += v.oilCost;
+                    }
+                    if (Math.floor(totalMileage / 40000) > Math.floor(prevTotalMileage / 40000)) {
+                        detail.maintenance += v.tireCost;
+                    }
 
-                    if (vehicle.fuelType === 'diesel' && vehicle.adblueCostPerL > 0 && actualMonthlyMileage > 0) {
-                        const prevAdblueRefillCount = Math.floor(prevTotalMileageFromRegistration / adblueIntervalKm);
-                        const currentAdblueRefillCount = Math.floor(totalMileageFromRegistration / adblueIntervalKm);
-                        
-                        const adblueRefillsInMonth = currentAdblueRefillCount - prevAdblueRefillCount;
-
-                        if (adblueRefillsInMonth > 0) {
-                            monthlyDetail.adblue = adblueRefillsInMonth * adblueAmountPerRefill * vehicle.adblueCostPerL;
+                    let isInspectionMonth = false;
+                    const inspectionCycleYears = (v.classificationType === 'cargo') ? 1 : 2;
+                    let firstInspectionYears = (v.classificationType === 'cargo') ? 2 : 3;
+                    
+                    if(v.nextInspectionDateStr) {
+                         const nextInspDate = new Date(v.nextInspectionDateStr);
+                         if (nextInspDate.getFullYear() === year && nextInspDate.getMonth() === month) {
+                           isInspectionMonth = true;
+                         }
+                    } else {
+                        let tempInspectionDate = new Date(firstRegDate);
+                        tempInspectionDate.setFullYear(tempInspectionDate.getFullYear() + firstInspectionYears);
+                        while (tempInspectionDate.getFullYear() < year || (tempInspectionDate.getFullYear() === year && tempInspectionDate.getMonth() < month)) {
+                            tempInspectionDate.setFullYear(tempInspectionDate.getFullYear() + inspectionCycleYears);
+                        }
+                        if (tempInspectionDate.getFullYear() === year && tempInspectionDate.getMonth() === month) {
+                            isInspectionMonth = true;
                         }
                     }
 
-                    if (vehicle.oilElementCostPerTime > 0 && actualMonthlyMileage > 0) {
-                        const prevOilExchangeCount = Math.floor(prevTotalMileageFromRegistration / oilExchangeIntervalKm);
-                        const currentOilExchangeCount = Math.floor(totalMileageFromRegistration / oilExchangeIntervalKm);
-                        
-                        const oilExchangesInMonth = currentOilExchangeCount - prevOilExchangeCount;
-                        
-                        if (oilExchangesInMonth > 0) {
-                            monthlyDetail.oilElement += oilExchangesInMonth * vehicle.oilElementCostPerTime;
-
-                            const prevElementExchangeCount = Math.floor(prevOilExchangeCount / oilElementExchangeRatio);
-                            const currentElementExchangeCount = Math.floor(currentOilExchangeCount / oilElementExchangeRatio);
-                            const elementExchangesInMonth = currentElementExchangeCount - prevElementExchangeCount;
-
-                            monthlyDetail.oilElement += elementExchangesInMonth * vehicle.oilElementCostPerTime;
-                        }
-                    }
-
-                    if (vehicle.tireCostPerSet > 0 && actualMonthlyMileage > 0) {
-                        const prevTireReplacementCount = Math.floor(prevTotalMileageFromRegistration / tireLifeKm);
-                        const currentTireReplacementCount = Math.floor(totalMileageFromRegistration / tireLifeKm);
-
-                        const tireReplacementsInMonth = currentTireReplacementCount - prevTireReplacementCount;
-                        monthlyDetail.tire = tireReplacementsInMonth * vehicle.tireCostPerSet;
+                    if (isInspectionMonth) {
+                        const isFirst = Math.abs(elapsedYears - firstInspectionYears) < 1;
+                        const weightTaxAmount = getWeightTax(v.weight, elapsedYears, v.isEcoCar, isFirst, v.classificationType) * inspectionCycleYears;
+                        const insuranceAmount = getCompulsoryInsurance(v.classificationType);
+                        const stampDuty = getStampDuty();
+                        detail.inspection = v.inspectionBaseCost + weightTaxAmount + insuranceAmount + stampDuty;
                     }
                     
-                    monthlyDetail.total = monthlyDetail.loan + monthlyDetail.fuel + monthlyDetail.autoTax + monthlyDetail.weightTax +
-                                          monthlyDetail.inspection + monthlyDetail.insurance + monthlyDetail.parking +
-                                          monthlyDetail.adblue + monthlyDetail.oilElement + monthlyDetail.tire;
-                    
-                    monthlyCostsForVehicle.push(monthlyDetail);
-                    totalOverallCostForVehicle += monthlyDetail.total;
+                    detail.total = detail.loan + detail.fuel + detail.autoTax + detail.inspection + detail.insurance + detail.parking + detail.maintenance;
+                    monthlyCostsForVehicle.push(detail);
 
                     currentMonthIter.setMonth(currentMonthIter.getMonth() + 1);
                 }
+
+                const totalCost = monthlyCostsForVehicle.reduce((sum, d) => sum + d.total, 0);
                 allMonthlyCosts.push({
-                    name: vehicle.name,
+                    name: v.name,
                     monthlyData: monthlyCostsForVehicle,
-                    totalCost: totalOverallCostForVehicle,
-                    avgMonthlyCost: totalOverallCostForVehicle / totalMonths 
+                    totalCost: totalCost,
+                    avgMonthlyCost: totalCost / Math.max(1, totalMonths)
                 });
             }
 
-            window.allCalculatedMonthlyCosts = allMonthlyCosts; 
+            window.allCalculatedMonthlyCosts = allMonthlyCosts;
+            displayResults(allMonthlyCosts);
+            renderChart(allMonthlyCosts);
+            renderMonthlyTables(allMonthlyCosts);
+        }
+        
+        function displayResults(allCosts) {
+             document.getElementById('vehicle1ResultName').textContent = allCosts[0].name;
+             document.getElementById('displayTotalCost1').textContent = formatNumber(allCosts[0].totalCost) + ' 円';
+             document.getElementById('displayMonthlyAvg1').textContent = `(月平均 ${formatNumber(allCosts[0].avgMonthlyCost)} 円)`;
 
-            // --- 結果の表示 ---
-            document.getElementById('vehicle1ResultName').textContent = allMonthlyCosts[0].name;
-            document.getElementById('displayTotalCost1').textContent = formatNumber(allMonthlyCosts[0].totalCost) + ' 円';
-            document.getElementById('displayMonthlyAvg1').textContent = `(月平均 ${formatNumber(allMonthlyCosts[0].avgMonthlyCost)} 円)`;
-
-            if (numberOfVehicles === 2) {
-                document.getElementById('vehicle2ResultName').textContent = allMonthlyCosts[1].name;
-                document.getElementById('displayTotalCost2').textContent = formatNumber(allMonthlyCosts[1].totalCost) + ' 円';
-                document.getElementById('displayMonthlyAvg2').textContent = `(月平均 ${formatNumber(allMonthlyCosts[1].avgMonthlyCost)} 円)`;
-                document.getElementById('vehicle2ResultItem').style.display = 'block';
-            } else {
-                document.getElementById('vehicle2ResultItem').style.display = 'none';
+            if (allCosts.length > 1) {
+                document.getElementById('vehicle2ResultName').textContent = allCosts[1].name;
+                document.getElementById('displayTotalCost2').textContent = formatNumber(allCosts[1].totalCost) + ' 円';
+                document.getElementById('displayMonthlyAvg2').textContent = `(月平均 ${formatNumber(allCosts[1].avgMonthlyCost)} 円)`;
             }
-
-            const tablesContainer = document.getElementById('monthlyBreakdownTables');
-            tablesContainer.innerHTML = ''; 
-
-            if (allMonthlyCosts[0].monthlyData.length === 0 && (numberOfVehicles === 1 || allMonthlyCosts[1].monthlyData.length === 0)) {
-                tablesContainer.innerHTML = '<p>指定された期間内に費用は発生しませんでした。</p>';
-                if (cumulativeCostChart) {
-                    cumulativeCostChart.destroy();
-                }
-                return;
-            }
-
-            allMonthlyCosts.slice(0, numberOfVehicles).forEach((vehicleData, index) => {
-                const tableDiv = document.createElement('div');
-                tableDiv.innerHTML = `<h3>${vehicleData.name} の月次費用内訳</h3>`;
-                tableDiv.style.marginBottom = '40px';
-
-                const tableWrapper = document.createElement('div');
-                tableWrapper.classList.add('monthly-breakdown-table-wrapper');
-
-                const table = document.createElement('table');
-                table.classList.add('monthly-breakdown');
-                const thead = document.createElement('thead');
-                const tbody = document.createElement('tbody');
-
-                const headerRow = document.createElement('tr');
-                headerRow.innerHTML = `
-                    <th>月</th>
-                    <th>ローン</th>
-                    <th>ガソリン</th>
-                    <th>自動車税</th>
-                    <th>重量税</th>
-                    <th>車検</th>
-                    <th>任意保険</th>
-                    <th>駐車場</th>
-                    <th>AdBlue</th>
-                    <th>オイル・エレメント</th>
-                    <th>タイヤ</th>
-                    <th>月合計</th>
-                `;
-                thead.appendChild(headerRow);
-                table.appendChild(thead);
-
-                vehicleData.monthlyData.forEach(data => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${data.date}</td>
-                        <td>${formatNumber(data.loan)}</td>
-                        <td>${formatNumber(data.fuel)}</td>
-                        <td>${formatNumber(data.autoTax)}</td>
-                        <td>${formatNumber(data.weightTax)}</td>
-                        <td>${formatNumber(data.inspection)}</td>
-                        <td>${formatNumber(data.insurance)}</td>
-                        <td>${formatNumber(data.parking)}</td>
-                        <td>${formatNumber(data.adblue)}</td>
-                        <td>${formatNumber(data.oilElement)}</td>
-                        <td>${formatNumber(data.tire)}</td>
-                        <td>${formatNumber(data.total)}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-                table.appendChild(tbody);
-                tableWrapper.appendChild(table); 
-                tableDiv.appendChild(tableWrapper); 
-                tablesContainer.appendChild(tableDiv);
-            });
-
-            // グラフの描画 (選択された項目で描画)
-            renderChart(allMonthlyCosts.slice(0, numberOfVehicles));
         }
 
-        function renderChart(allMonthlyCosts) {
+        function renderMonthlyTables(allCosts) {
+            const container = document.getElementById('monthlyBreakdownTables');
+            container.innerHTML = '';
+            
+            allCosts.forEach(vehicleData => {
+                let tableHtml = `<h3>${vehicleData.name} の月次費用内訳</h3>
+                    <div class="monthly-breakdown-table-wrapper">
+                        <table class="monthly-breakdown">
+                            <thead><tr>
+                                <th>月</th><th>ローン</th><th>燃料・電気代</th><th>自動車税</th><th>車検関連</th><th>任意保険</th><th>駐車場</th><th>メンテナンス</th><th>月合計</th>
+                            </tr></thead><tbody>`;
+                
+                vehicleData.monthlyData.forEach(d => {
+                    tableHtml += `<tr>
+                        <td>${d.date}</td><td>${formatNumber(d.loan)}</td><td>${formatNumber(d.fuel)}</td><td>${formatNumber(d.autoTax)}</td>
+                        <td>${formatNumber(d.inspection)}</td><td>${formatNumber(d.insurance)}</td><td>${formatNumber(d.parking)}</td>
+                        <td>${formatNumber(d.maintenance)}</td><td>${formatNumber(d.total)}</td>
+                    </tr>`;
+                });
+                
+                tableHtml += `</tbody></table></div>`;
+                container.innerHTML += tableHtml;
+            });
+        }
+        
+        function renderChart(allCosts) {
             const ctx = document.getElementById('cumulativeCostChart').getContext('2d');
             const chartType = document.getElementById('chartTypeSelect').value;
 
-            if (cumulativeCostChart) {
-                cumulativeCostChart.destroy();
-            }
-            
-            // データがない場合はグラフを非表示
-            if (!allMonthlyCosts || allMonthlyCosts.length === 0 || allMonthlyCosts[0].monthlyData.length === 0) {
-                ctx.canvas.style.display = 'none';
-                return;
-            } else {
-                ctx.canvas.style.display = 'block';
-            }
+            if (cumulativeCostChart) cumulativeCostChart.destroy();
+            if (!allCosts || allCosts.length === 0 || allCosts[0].monthlyData.length === 0) return;
 
-            const labels = allMonthlyCosts[0].monthlyData.map(m => m.date);
-
-            const datasets = allMonthlyCosts.map((vehicleData, index) => {
-                let costsToDisplay = [];
-                let currentCumulative = 0;
-
-                vehicleData.monthlyData.forEach(m => {
-                    const costValue = m[chartType];
-                    // 総費用以外は累計にしない (月ごとの金額をそのまま表示)
+            const labels = allCosts[0].monthlyData.map(m => m.date);
+            const datasets = allCosts.map((vehicleData, index) => {
+                let cumulative = 0;
+                const data = vehicleData.monthlyData.map(m => {
+                    const value = m[chartType] || 0;
                     if (chartType === 'total') {
-                        currentCumulative += costValue;
-                        costsToDisplay.push(currentCumulative);
-                    } else {
-                        costsToDisplay.push(costValue);
+                        cumulative += value;
+                        return cumulative;
                     }
+                    return value;
                 });
-
-                const colors = [
-                    'rgb(75, 192, 192)', 
-                    'rgb(255, 99, 132)'  
-                ];
-                const borderColors = [
-                    'rgba(75, 192, 192, 0.8)',
-                    'rgba(255, 99, 132, 0.8)'
-                ];
-                const pointColors = [
-                    'rgb(75, 192, 192)',
-                    'rgb(255, 99, 132)'
-                ];
-
-                const chartLabelMap = {
-                    total: '総費用',
-                    loan: 'ローン',
-                    fuel: 'ガソリン',
-                    autoTax: '自動車税',
-                    weightTax: '重量税',
-                    inspection: '車検',
-                    insurance: '任意保険',
-                    parking: '駐車場',
-                    adblue: 'AdBlue',
-                    oilElement: 'オイル・エレメント',
-                    tire: 'タイヤ'
-                };
-
-                const datasetLabel = `${vehicleData.name} ${chartLabelMap[chartType]}${chartType === 'total' ? ' 累計' : ''} (円)`;
-                const chartTitle = `${chartLabelMap[chartType]} 推移`;
-                const yAxisLabel = `${chartLabelMap[chartType]} (円)`;
-
+                
+                const colors = ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'];
                 return {
-                    label: datasetLabel,
-                    data: costsToDisplay,
-                    borderColor: borderColors[index],
-                    backgroundColor: colors[index], 
-                    tension: 0.1,
+                    label: `${vehicleData.name} ${chartType === 'total' ? '累計' : ''}`,
+                    data: data,
+                    borderColor: colors[index],
+                    backgroundColor: colors[index],
                     fill: false,
-                    pointBackgroundColor: pointColors[index],
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: pointColors[index]
                 };
             });
-
-            const chartLabelMap = {
-                total: '総費用',
-                loan: 'ローン',
-                fuel: 'ガソリン',
-                autoTax: '自動車税',
-                weightTax: '重量税',
-                inspection: '車検',
-                insurance: '任意保険',
-                parking: '駐車場',
-                adblue: 'AdBlue',
-                oilElement: 'オイル・エレメント',
-                tire: 'タイヤ'
-            };
-
-            const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
             cumulativeCostChart = new Chart(ctx, {
                 type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: datasets
-                },
+                data: { labels, datasets },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: !isMobile, /* モバイルでのみアスペクト比を維持しない */
                     plugins: {
-                        title: {
-                            display: true,
-                            text: `車両別 ${chartLabelMap[chartType]}${chartType === 'total' ? ' 累計' : ''} 推移`, 
-                            font: {
-                                size: isMobile ? 14 : 16 /* モバイル向けにフォントサイズ調整 */
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        label += formatNumber(context.parsed.y) + ' 円';
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
+                        title: { display: true, text: `費用推移グラフ`, font: { size: 18 } },
+                        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${formatNumber(ctx.raw)} 円` } }
                     },
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: '年月',
-                                font: {
-                                    size: isMobile ? 10 : 12
-                                }
-                            },
-                            ticks: {
-                                font: {
-                                    size: isMobile ? 8 : 10
-                                }
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: `${chartLabelMap[chartType]} (円)`,
-                                font: {
-                                    size: isMobile ? 10 : 12
-                                }
-                            },
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value, index, values) {
-                                    return formatNumber(value);
-                                },
-                                font: {
-                                    size: isMobile ? 8 : 10
-                                }
-                            }
-                        }
-                    }
+                    scales: { y: { beginAtZero: true, ticks: { callback: val => formatNumber(val) } } }
                 }
             });
         }
+        
+        function downloadCSV() {
+            if (!window.allCalculatedMonthlyCosts || window.allCalculatedMonthlyCosts.length === 0) {
+                alert('先に計算を実行してください。');
+                return;
+            }
+
+            const headers = ['年月', '車両名', 'ローン', '燃料・電気代', '自動車税', '車検関連費用', '任意保険', '駐車場', 'メンテナンス', '月合計'];
+            let csvContent = "\uFEFF" + headers.join(',') + '\r\n';
+
+            window.allCalculatedMonthlyCosts.forEach(vehicleData => {
+                vehicleData.monthlyData.forEach(d => {
+                    const row = [
+                        d.date.replace('年','-').replace('月',''), vehicleData.name, Math.round(d.loan), Math.round(d.fuel), Math.round(d.autoTax), 
+                        Math.round(d.inspection), Math.round(d.insurance), Math.round(d.parking), 
+                        Math.round(d.maintenance), Math.round(d.total)
+                    ];
+                    csvContent += row.join(',') + '\r\n';
+                });
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "car_maintenance_costs.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const today = new Date('2025-06-28T00:00:00'); // 現在の日付を固定
-            const oneYearLater = new Date(today);
-            oneYearLater.setFullYear(today.getFullYear() + 1);
+            const today = new Date();
+            const fiveYearsLater = new Date(today);
+            fiveYearsLater.setFullYear(today.getFullYear() + 5);
 
-            const formatDate = (date) => {
-                const y = date.getFullYear();
-                const m = (date.getMonth() + 1).toString().padStart(2, '0');
-                const d = date.getDate().toString().padStart(2, '0');
-                return `${y}-${m}-${d}`;
-            };
+            const formatDate = (date) => date.toISOString().split('T')[0];
 
             document.getElementById('startDate').value = formatDate(today);
-            document.getElementById('endDate').value = formatDate(oneYearLater);
-
-            const currentYear = today.getFullYear();
-            const currentMonth = (today.getMonth() + 1).toString().padStart(2, '0');
-            const currentDay = today.getDate().toString().padStart(2, '0');
+            document.getElementById('endDate').value = formatDate(fiveYearsLater);
             
-            // 車両1は2年前、車両2は今日を初期値とする
-            document.getElementById('firstRegistrationDate1').value = `${currentYear - 2}-${currentMonth}-${currentDay}`; 
-            document.getElementById('nextInspectionDate1').value = `${currentYear}-09-15`; 
-
-            document.getElementById('firstRegistrationDate2').value = `${currentYear}-${currentMonth}-${currentDay}`; 
-            document.getElementById('nextInspectionDate2').value = `${currentYear + 3}-01-01`; 
-
-            // 初期表示時のフィールド表示を制御（デフォルトで車両2は非表示）
-            toggleLoanFields(1); 
-            toggle1NumberFields(1); 
-            toggleFuelTypeFields(1); 
+            const fiveYearsAgo = new Date(today);
+            fiveYearsAgo.setFullYear(today.getFullYear() - 5);
+            document.getElementById('firstRegistrationDate1').value = formatDate(fiveYearsAgo);
             
-            // 車両2の初期状態設定
-            document.getElementById('vehicle2Inputs').style.display = 'none';
-            document.getElementById('vehicle2ResultItem').style.display = 'none';
-            // 車両2のAdBlue費用グループを初期で非表示にする
-            document.getElementById('adblueCostGroup2').style.display = 'none';
-            document.getElementById('oilInfoText2').textContent = '※目安: 10000km(G)'; // ガソリン車として設定
+            document.getElementById('firstRegistrationDate2').value = formatDate(today);
+            const threeYearsLater = new Date(today);
+            threeYearsLater.setFullYear(today.getFullYear() + 3);
+            document.getElementById('nextInspectionDate2').value = formatDate(threeYearsLater);
 
-            // 初期計算を実行（デフォルトは1台のみ）
+            toggleFuelTypeFields(1);
+            if(document.getElementById('compareVehicles').checked) {
+                 toggleFuelTypeFields(2);
+                 toggleLoanFields(2);
+                 toggle1NumberFields(2);
+            }
+            toggleLoanFields(1);
+            toggle1NumberFields(1);
+
             calculateCarCosts(); 
         });
     </script>
