@@ -1068,17 +1068,20 @@
                 return;
             }
 
-            // ヘッダーを「年月」「車両名」「月合計」に修正
-            const headers = ['年月', '車両名', '月合計'];
+            // ヘッダーを「累計費用」に変更
+            const headers = ['年月', '車両名', '累計費用'];
             let csvContent = "\uFEFF" + headers.join(',') + '\r\n';
 
-            // 出力データをヘッダーに合わせて修正
             window.allCalculatedMonthlyCosts.forEach(vehicleData => {
+                let cumulativeCost = 0; // 車両ごとに累計費用をリセット
+
                 vehicleData.monthlyData.forEach(d => {
+                    cumulativeCost += d.total; // 当該月の費用を累計に加算
+
                     const row = [
                         d.date.replace('年','-').replace('月',''),
                         vehicleData.name,
-                        Math.round(d.total)
+                        Math.round(cumulativeCost) // 累計費用を出力
                     ];
                     csvContent += row.join(',') + '\r\n';
                 });
